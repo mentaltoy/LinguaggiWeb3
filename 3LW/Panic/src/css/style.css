@@ -1,0 +1,181 @@
+body{
+	background-color: #ddd;
+	font-family: 'Space Mono', monospace;
+	padding: 20px;
+}
+
+h4{
+	margin-top: 40px;
+}
+
+.website{
+	background-color: white;
+}
+
+.box-container{
+	border: 1px dashed #666;
+	margin: 3px;
+	position: relative;
+}
+
+
+.box{
+	width: 150px;
+	height: 150px;
+	border: 1px solid white;
+	margin: 5px;
+	background-image: url(../img/pattern.png); 
+}
+
+.box.transform-1{
+	transform: translate(20px,30px) scaleY(0.7);
+}
+
+.box.transform-2{
+	transform: rotateZ(35deg) rotateY(45deg);
+}
+
+
+/* Transform Origin */
+
+.transform-origin-title{
+	margin-top: 40px;
+}
+
+.box.transform-origin{
+	color: white;
+	padding: 20px;
+	margin: 50px;
+	position: relative;
+}
+
+.box.transform-origin:before{
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	border: 1px dashed #666;
+}
+
+.box.transform-origin:after{
+	content: '';
+	top: 50%;
+	left: 50%;
+	position: absolute;
+	width: 10px;
+	height: 10px;
+	background-color: red;
+	transform: translate(-50%, -50%);
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	border-radius: 50%;
+}
+
+.box.transform-origin.on:after{
+	top: 0;
+	left: 0;
+}
+
+.on{
+	transform-origin: 0 0;
+}
+
+.on:before{
+	transform-origin: 0 0;
+}
+
+
+.t1{
+	transform: skewY(-20deg);
+}
+
+.t1:before{
+	transform: skewY(20deg);
+}
+
+
+.t2{
+	transform: rotate(-20deg);
+}
+
+.t2:before{
+	transform: rotate(20deg);
+}
+
+
+.t3{
+	transform: scaleX(1.2);
+}
+
+.t3:before{
+	transform: scaleX(0.8);
+}
+
+
+
+
+
+
+.ssr-container{
+	overflow: hidden;
+	position: relative;
+}
+
+.box.transform-3{
+	transform:matrix(0.87,0.50,-0.69,0.59,0,0);
+	position: relative;
+	left: 50px;
+	bottom: 0;
+	margin: 50px 0;
+	z-index: 2;
+	transition: bottom 0.3s ease-in-out;
+}
+
+.box.transform-3.shadow{
+	transform:matrix(0.87,0.50,-0.69,0.59,0,0);
+	background-image: url(../img/shadow.png); 
+	position: absolute;
+    left: 50px;
+    top: 5px;
+	border: 0;
+	opacity: 1;
+	z-index: 1;
+	transition: all 0.3s;
+}
+
+.box.transform-3:hover{
+	bottom: 40px;
+}
+
+.ssr-container:hover .box.transform-3.shadow{
+	opacity: 0.6;
+}
+
+
+
+
+
+.box.transform-3.a, .box.transform-3.b, .box.transform-3.c{
+	position: absolute;
+	opacity: 0.6;
+	z-index: 1;
+}
+
+.box.transform-3.a {
+    left: 162px;
+    top: -97px;
+}
+
+.box.transform-3.b {
+    left: 190px;
+    top: 83px;
+}
+
+.box.transform-3.c {
+    left: -65px;
+    top: 98px;
+}
+
+

@@ -1,0 +1,21 @@
+body{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+}
+
+h4{
+    margin-top: 40px;
+}
+
+.table h4{
+    margin: 0;
+}
+
+
+.highcharts-tooltip>span {
+    background: white;
+    border: 1px solid silver;
+    border-radius: 3px;
+    box-shadow: 1px 1px 2px #888;
+    padding: 8px;
+}

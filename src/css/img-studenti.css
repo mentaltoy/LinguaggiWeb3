@@ -1,0 +1,28 @@
+/* Immagini studenti */
+
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th{
+	vertical-align: middle;
+}
+
+
+
+.stud-img{
+	height:50px;
+	width: 50px;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	border-radius: 50%;
+	display: inline-block;
+	background-size: contain;
+	background-color: #efefef;
+}
+
+
+
+.gioa{
+	background-image: url(../img/gioacchino.jpg);
+}
+
+.gian{
+	background-image: url(../img/gian.jpg);
+}
