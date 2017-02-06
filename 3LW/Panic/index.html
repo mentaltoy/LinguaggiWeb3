@@ -23,28 +23,124 @@
 
 <h1>Panic - Case Study</h1>
 
+<h4>Angolo in angolo a sinistra</h4>
 
-<h4>Double Transform</h4>
+<p>E' interessante notare come l'angolo in alto a sinistra dove è stata inserita l'icona del menù sembri avere una
+    funzionalità sticky javascript. Invece è stato realizzato con il CSS che spieghiamo in seguito. In questo caso
+    bisogna prestare particolare attenzione al punto di applicazione della trasformazione che permette di posizionare al
+    meglio l'elemento (vedere lezione trasformazione)</p>
+
+<a href="http://www.quasar-1617.com/1LW/Transform/index.html">Lezione Trasformazione</a>
 
 
-<p>La proprietà transform applica una trasformazione 2D ad un elemento. Permette di scalare, ruotare, spostare gli
-    elementi in 2 dimensioni.</p>
+<h4>Doppia trasformazione</h4>
+
+
+<p>L'effetto a fascia inclinata è stato ottenuto applicando al container (nel caso di bootstrap), un inclinazione di -10
+    gradi</p>
 
 <p>
-    CSS: <code>transform: &lt;funzione&gt;;</code>
+    CSS: <code>transform:skewY(-10deg);</code>
 </p>
+
+<p>La griglia di bootstrap si distorce, ma mantenendo la sua responsivness. Il testo, di conseguenza, assume questo
+    aspetto quasi "italic". Nel sito però le immagini sono "tagliate" dalla fascia, ma non distorte. Per ottenere questo
+    effetto è stata applicata un'inclinazione contraria all'immagine:</p>
 
 <p>
-    CSS: <code>transform: translate(20px,30px) scaleY(0.5);</code>
+    CSS: <code>transform:skewY(10deg);</code>
 </p>
 
+<p>Da notare che lo stesso effetto si può applicare anche all'elemento video. Ne è un esempio lo show reel in alto.
+    Le immagini poi sono state inserite in un contenitore che ne determina l'altezza in modo da poter riempire lo spazio
+    senza utilizzare proprietà di background CSS (come background:cover). In questo modo la griglia funziona anche su cellulare quando le
+    colonne collassano (e tramite il contenitore posso anche applicare un animazione sull'hover)</p>
 
-<div class="box-container">
-    <div class="box transform-1"></div>
+
+<div class="box-container container-fluid">
+    <div class="row">
+        <div class="col-sm-4 item">
+            <div class="img-container">
+                <img src="src/img/img-1.jpeg" alt="img-1"/>
+            </div>
+            <h3>TITOLO 1</h3>
+
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate delectus dignissimos incidunt minima
+                nisi optio quidem quisquam sint sunt voluptas! Exercitationem, quia, recusandae? Beatae eius iste minus
+                molestiae qui saepe.</p>
+        </div>
+        <div class="col-sm-4 item">
+            <div class="img-container">
+                <img src="src/img/img-2.jpeg" alt="img-2"/>
+            </div>
+            <h3>TITOLO 2</h3>
+
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate delectus dignissimos incidunt minima
+                nisi optio quidem quisquam sint sunt voluptas! Exercitationem, quia, recusandae? Beatae eius iste minus
+                molestiae qui saepe.</p>
+        </div>
+        <div class="col-sm-4 item">
+            <div class="img-container">
+                <img src="src/img/img-3.jpeg" alt="img-3"/>
+            </div>
+            <h3>TITOLO 3</h3>
+
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate delectus dignissimos incidunt minima
+                nisi optio quidem quisquam sint sunt voluptas! Exercitationem, quia, recusandae? Beatae eius iste minus
+                molestiae qui saepe.</p>
+
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-sm-4">
+
+        </div>
+        <div class="col-sm-4">
+
+        </div>
+        <div class="col-sm-4">
+
+        </div>
+    </div>
+
+
 </div>
 
 
-<br><br><br><br><br><br>
+<h4>Sprites</h4>
+
+<!--Potrebbe essere una lezione a parte-->
+
+<p>Per generare le sprite il modo migliore è con After Effect e il plugin SHEETAH</p>
+
+
+<p><a href="http://aescripts.com/sheetah-spritesheet-tools/">SHEETAH</a></p>
+
+<p>Esiste anche la versione per Photoshop. Calcola da solo la grandezza e la altezza ottimali per l'immagine</p>
+
+<p>Esistono diversi modi di animare gli sprite:</p>
+
+<p>Con il CSS:</p>
+
+<a href="http://blog.teamtreehouse.com/css-sprite-sheet-animations-steps">CSS Sprite</a>
+
+<p>Il fattore negativo è che deve stare su una stessa linea. In pratica basta creare un animazione con animate, spostare il background del contenitore quanto è la sua width (in negativo), e indicare negli steps il numero di frame dell'animazione</p>
+
+
+<p> <code>background-position: -(width)px;</code> </p>
+
+<p><code>animation: play 0.8s steps(numero di frame) infinite;</code> Infinite se si vuole un loop</p>
+
+
+<p>Con il javascript:</p>
+
+<p>Esistono diverse librerie per animare le sprite con il CSS</p>
+
+<p>Una molto semplice e Motio. Quella con cui è costruito questo esempio:</p>
+
+<a href="">Link Motio</a>
 
 
 </body>
@@ -54,10 +150,14 @@
         integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
         crossorigin="anonymous"></script>
 
+
+
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
         integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"></script>
 
+<!--Motio-->
+<script src="src/js/motio.min.js"></script>
 
 </html>
