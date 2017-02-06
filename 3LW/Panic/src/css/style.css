@@ -57,3 +57,8 @@ h4{
 }
 
 
+#sprite {
+	width: 320px;
+	height: 320px;
+	background: url('../img/sprite0.png');
+}

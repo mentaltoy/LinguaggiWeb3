@@ -53,7 +53,8 @@
 
 <p>Da notare che lo stesso effetto si può applicare anche all'elemento video. Ne è un esempio lo show reel in alto.
     Le immagini poi sono state inserite in un contenitore che ne determina l'altezza in modo da poter riempire lo spazio
-    senza utilizzare proprietà di background CSS (come background:cover). In questo modo la griglia funziona anche su cellulare quando le
+    senza utilizzare proprietà di background CSS (come background:cover). In questo modo la griglia funziona anche su
+    cellulare quando le
     colonne collassano (e tramite il contenitore posso anche applicare un animazione sull'hover)</p>
 
 
@@ -109,7 +110,7 @@
 </div>
 
 
-<h4>Sprites</h4>
+<h4>Sprite Animation</h4>
 
 <!--Potrebbe essere una lezione a parte-->
 
@@ -118,7 +119,8 @@
 
 <p><a href="http://aescripts.com/sheetah-spritesheet-tools/">SHEETAH</a></p>
 
-<p>Esiste anche la versione per Photoshop. Calcola da solo la grandezza e la altezza ottimali per l'immagine</p>
+<p>Esiste anche la versione per Photoshop. Calcola da solo la grandezza e la altezza ottimali per l'immagine. Ricorda di
+    fare il pre-render dell'animazione se vuoi il motion blur.</p>
 
 <p>Esistono diversi modi di animare gli sprite:</p>
 
@@ -126,10 +128,12 @@
 
 <a href="http://blog.teamtreehouse.com/css-sprite-sheet-animations-steps">CSS Sprite</a>
 
-<p>Il fattore negativo è che deve stare su una stessa linea. In pratica basta creare un animazione con animate, spostare il background del contenitore quanto è la sua width (in negativo), e indicare negli steps il numero di frame dell'animazione</p>
+<p>Il fattore negativo è che deve stare su una stessa linea. In pratica basta creare un animazione con animate, spostare
+    il background del contenitore quanto è la sua width (in negativo), e indicare negli steps il numero di frame
+    dell'animazione</p>
 
 
-<p> <code>background-position: -(width)px;</code> </p>
+<p><code>background-position: -(width)px;</code></p>
 
 <p><code>animation: play 0.8s steps(numero di frame) infinite;</code> Infinite se si vuole un loop</p>
 
@@ -138,10 +142,29 @@
 
 <p>Esistono diverse librerie per animare le sprite con il CSS</p>
 
-<p>Una molto semplice e Motio. Quella con cui è costruito questo esempio:</p>
+<p>Una molto semplice è Motio. Anche in questo caso la sprite deve essere sulla stessa riga.</p>
 
-<a href="">Link Motio</a>
+<p><a href="http://darsa.in/motio/">Link Motio</a> | <a href="https://github.com/darsain/motio"> Motio - Github</a></p>
 
+<p>Quella più adatta al nostro scopo sembra essere quella di Stupid Studio (esempio sotto). Anche se poco supportata ha
+    diversi lati positivi: sfrutta le sprite su righe e colonne, permette anche la divisone di un'animazione più lunga
+    su diverse sprite ed ha diverse funzionalità. Ricorda di chiamare l'immagine con nome + 0.png. E di inizializzare anche con il javascript la sprite (nonostante i settings da data-attribute)</p>
+
+<p><a href="http://apps.stupid-studio.com/">Link Stupid Studio</a> | <a
+        href="https://github.com/StupidStudio/jQuery-Sprite-Anim"> Stupid Studio - Github</a></p>
+
+<div id='mySpriteAnimation'
+     data-baseurl='src/img/sprite'
+     data-grid='5x7'
+     data-blocksize='320x320'
+     data-frames='33'
+     data-fps='25'
+     data-autoplay='true'
+     data-autoload='true'
+     data-retina='false'
+        ></div>
+
+<br><br><br><br><br><br>
 
 </body>
 
@@ -151,7 +174,6 @@
         crossorigin="anonymous"></script>
 
 
-
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
         integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
@@ -159,5 +181,16 @@
 
 <!--Motio-->
 <script src="src/js/motio.min.js"></script>
+
+<!--StupidStudio-->
+<script src="src/js/jquery.spriteanim.js"></script>
+
+<script>
+    jQuery(function ($) {
+        $('#mySpriteAnimation').spriteanim();
+
+    });
+</script>
+
 
 </html>
