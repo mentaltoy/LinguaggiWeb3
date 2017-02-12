@@ -115,7 +115,7 @@
                .contenitore{
 
                .figlio{
-               proprietà: &lt;valore&gt;
+                    proprietà: &lt;valore&gt;
                }
 
                }
@@ -128,11 +128,11 @@
                .btn{
 
                &:hover{
-               color: blue;
+                    color: blue;
                }
 
                &:active{
-               color: red;
+                    color: red;
                }
 
                }
@@ -177,7 +177,7 @@
                $side: top;
 
                .margin{
-               margin-#{$side}: 20px;
+                    margin-#{$side}: 20px;
                }
 
            </code>
@@ -194,10 +194,10 @@
         <pre>
            <code>
                @mixin border-radius($radius) {
-               -webkit-border-radius: $radius;
-               -moz-border-radius: $radius;
-               -ms-border-radius: $radius;
-               border-radius: $radius;
+                   -webkit-border-radius: $radius;
+                   -moz-border-radius: $radius;
+                   -ms-border-radius: $radius;
+                   border-radius: $radius;
                }
 
                @include border-radius(10px);
@@ -219,11 +219,11 @@
         <pre>
             <code>
                 @mixin border-radius($radius: 10px, $vertical-radius: 10px) {
-                border-radius: #{$radius} / #{$vertical-radius};
+                    border-radius: #{$radius} / #{$vertical-radius};
                 }
 
                 .foo {
-                @include border-radius($vertical-radius: 25px);
+                    @include border-radius($vertical-radius: 25px);
                 }
             </code>
 
@@ -295,7 +295,7 @@
         <pre>
             <code>
                 .mia-nome-icona{
-                @extend .icona-set-icone-esistente;
+                    @extend .icona-set-icone-esistente;
                 }
             </code>
 
@@ -318,7 +318,7 @@
                 $col-count: 12;
 
                 @function col-pct($columns) {
-                @return unquote((100/$col-count)*$columns+"%");
+                    @return unquote((100/$col-count)*$columns+"%");
                 }
 
                 .col-6 { width: col-pct(6);}
@@ -348,7 +348,7 @@
                 @each $img-name in $img-names {
 
                 .image-#{$img-name}{
-                background-image: url(../img/img-#{$img-name}.jpeg);
+                    background-image: url(../img/img-#{$img-name}.jpeg);
                 }
 
                 }
