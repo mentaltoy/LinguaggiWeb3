@@ -1,0 +1,122 @@
+body {
+  background-color: #ddd;
+  font-family: 'Space Mono', monospace;
+  padding: 20px;
+  -webkit-font-smoothing: antialiased; }
+
+h4 {
+  margin-top: 40px; }
+
+.website {
+  background-color: white; }
+
+.box-container {
+  border: 1px dashed #666;
+  margin: 180px -20px;
+  transform: skewY(-10deg);
+  background-color: white;
+  /*transform-origin: 0 0;*/ }
+
+pre {
+  -moz-border-radius-topleft: 0;
+  -webkit-border-top-left-radius: 0;
+  border-top-left-radius: 0;
+  -moz-border-radius-topright: 0;
+  -webkit-border-top-right-radius: 0;
+  border-top-right-radius: 0;
+  -moz-border-radius-bottomright: 0;
+  -webkit-border-bottom-right-radius: 0;
+  border-bottom-right-radius: 0;
+  -moz-border-radius-bottomleft: 0;
+  -webkit-border-bottom-left-radius: 0;
+  border-bottom-left-radius: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  border-radius: 0;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  border-top: none;
+  border-right: none;
+  border-bottom: none;
+  border-left: none;
+  border: none;
+  padding-bottom: 0;
+  background-color: #f9f2f4; }
+
+pre code {
+  color: #c7254e; }
+
+.fooReveal {
+  margin-bottom: 150px; }
+
+.margin {
+  margin-top: 20px; }
+
+.color, .elemento {
+  width: 400px;
+  height: 100px;
+  display: inline-block; }
+  .color.sum, .sum.elemento {
+    background-color: yellow; }
+  .color.invert-seed, .invert-seed.elemento {
+    background-color: #5c0dac; }
+  .color.invert, .invert.elemento {
+    background-color: #eeea21; }
+  .color.tone-1, .tone-1.elemento {
+    width: 80px;
+    background-color: #8f30ef;
+    color: white; }
+  .color.tone-2, .tone-2.elemento {
+    width: 80px;
+    background-color: #c28ff6; }
+  .color.tone-3, .tone-3.elemento {
+    width: 80px;
+    background-color: #f5edfe; }
+  .color.tone-4, .tone-4.elemento {
+    width: 80px;
+    background-color: white; }
+  .color.tone-5, .tone-5.elemento {
+    width: 80px;
+    background-color: white; }
+
+.col-3 {
+  width: 25%; }
+
+.col-6 {
+  width: 50%; }
+
+.image-box {
+  width: 200px;
+  height: 305px;
+  display: inline-block;
+  background-size: contain;
+  background-repeat: no-repeat; }
+
+.image-linee {
+  background-image: url(../img/img-linee.jpeg); }
+
+.image-quadrati {
+  background-image: url(../img/img-quadrati.jpeg); }
+
+.image-frecce {
+  background-image: url(../img/img-frecce.jpeg); }
+
+.elemento {
+  width: 100%;
+  /* Extra small devices (phones, less than 768px) */
+  /* No media query since this is the default in Bootstrap */
+  background-color: #5C0DAC;
+  /* Small devices (tablets, 768px and up) */
+  /* Medium devices (desktops, 992px and up) */
+  /* Large devices (large desktops, 1200px and up) */ }
+  @media (min-width: 768px) {
+    .elemento {
+      background-color: red; } }
+  @media (min-width: 992px) {
+    .elemento {
+      background-color: yellow; } }
+  @media (min-width: 1200px) {
+    .elemento {
+      background-color: green; } }

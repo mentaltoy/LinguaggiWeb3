@@ -1,0 +1,168 @@
+@import "mixins";
+
+body{
+	background-color: #ddd;
+	font-family: 'Space Mono', monospace;
+	padding: 20px;
+	-webkit-font-smoothing: antialiased;
+}
+
+
+
+h4{
+	margin-top: 40px;
+}
+
+.website{
+	background-color: white;
+}
+
+.box-container{
+	border: 1px dashed #666;
+	margin: 180px -20px;
+	transform:skewY(-10deg);
+	background-color: white;
+	/*transform-origin: 0 0;*/
+
+}
+
+
+pre{
+  @include no-border-radius;
+  @include noshadow;
+  @include no-border;
+  padding-bottom: 0;
+  background-color: #f9f2f4;
+}
+
+pre code{
+	color: #c7254e;
+}
+
+
+
+.fooReveal{
+	margin-bottom: 150px;
+}
+
+$side: top;
+
+.margin{
+  margin-#{$side}: 20px;
+
+}
+
+
+$color-invert:#5C0DAC;
+
+$color-tone: #5C0DAC;
+
+.color{
+  width: 400px;
+  height: 100px;
+  display: inline-block;
+
+  &.sum{
+	background-color: #ff0000 + #00ff00;
+  }
+
+  &.invert-seed{
+
+	background-color: $color-invert;
+  }
+
+  &.invert{
+	background-color: adjust_hue(lighten($color-invert, 17), 149);
+  }
+
+  &.tone-1{
+	width: 80px;
+	background-color: lighten($color-invert, 20);
+	color: white;
+  }
+
+  &.tone-2{
+	width: 80px;
+	background-color: lighten($color-invert, 40);
+  }
+
+  &.tone-3{
+	width: 80px;
+	background-color: lighten($color-invert, 60);
+  }
+
+  &.tone-4{
+	width: 80px;
+	background-color: lighten($color-invert, 80);
+  }
+
+  &.tone-5{
+	width: 80px;
+	background-color: lighten($color-invert, 100);
+  }
+
+
+
+}
+
+$col-count: 12;
+
+@function col-pct($columns) {
+  @return unquote((100/$col-count)*$columns+"%");
+}
+
+.col-3 { width: col-pct(3);}
+
+.col-6 { width: col-pct(6);}
+
+
+.image-box{
+  width: 200px;
+  height: 305px;
+  display: inline-block;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+$img-names: linee quadrati frecce;
+
+@each $img-name in $img-names {
+
+  .image-#{$img-name}{
+	background-image: url(../img/img-#{$img-name}.jpeg);
+  }
+
+}
+
+$screen-sm-min:768px;
+$screen-md-min:992px;
+$screen-lg-min:1200px;
+
+.elemento{
+  @extend .color;
+
+  width: 100%;
+
+
+  /* Extra small devices (phones, less than 768px) */
+  /* No media query since this is the default in Bootstrap */
+
+  background-color: #5C0DAC;
+
+  /* Small devices (tablets, 768px and up) */
+  @media (min-width:$screen-sm-min) {
+  	background-color: red;
+  }
+
+  /* Medium devices (desktops, 992px and up) */
+  @media (min-width: $screen-md-min) {
+	background-color: yellow;
+  }
+
+  /* Large devices (large desktops, 1200px and up) */
+  @media (min-width: $screen-lg-min) {
+	background-color: green;
+  }
+
+
+}

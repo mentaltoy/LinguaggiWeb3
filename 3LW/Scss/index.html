@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Scss</title>
+
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Space Mono -->
+    <link href="https://fonts.googleapis.com/css?family=Space+Mono" rel="stylesheet">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="src/css/style.css">
+
+    <!-- load and instantiate ScrollReveal first -->
+    <script src="https://unpkg.com/scrollreveal@3.3.2/dist/scrollreveal.min.js"></script>
+    <script>
+        window.sr = ScrollReveal();
+
+        // Add class to <html> if ScrollReveal is supported
+        if (sr.isSupported()) {
+            document.documentElement.classList.add('sr');
+        }
+
+    </script>
+
+    <style>
+
+        /* Ensure elements load hidden before ScrollReveal runs */
+        .sr .fooReveal {
+            visibility: hidden;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+
+<h1>SCSS</h1>
+
+
+<div class="fooContainer">
+    <div class="fooReveal">
+        <h4>Definizione</h4>
+
+        <p>SCSS sta per Sassy CSS. Sass (Syntactically Awesome StyleSheets) è un'estensione del linguaggio CSS che
+            permette di utilizzare variabili, di creare funzioni e di organizzare il foglio di stile in più file.
+
+            Il linguaggio Sass si basa sul concetto di preprocessore CSS, il quale serve a definire fogli di stile con
+            una forma più semplice, completa e potente rispetto ai CSS e a generare file CSS ottimizzati, aggregando le
+            strutture definite anche in modo complesso. (<a href="https://it.wikipedia.org/wiki/Sass">Wikipedia</a>)</p>
+
+        <p>Tra le sue principali caratteristiche possiamo quindi segnalare la risoluzione di problemi come: assenza di
+            variazioni (con le variabili), ripetizioni continue (con i mixin) e le dimensioni del file (con la
+            compilazione e la compressione) </p>
+
+        <p>Ecco alcuni strumenti per la gestione di progetti con l'uso di SCSS</p>
+
+        <a href="https://www.jetbrains.com/idea/">IntelliJ IDEA (+ plugin File Watcher per SCSS)</a> | <a
+            href="http://www.sassmeister.com/">SASSMeister (con compressore: Option > CSS Output)</a>
+
+
+    </div>
+
+
+    <div class="fooReveal">
+
+        <h4>Commenti</h4>
+
+        <p>Valgono i commenti con le due // come su javascript. Usando <code>/* */</code> il commento viene
+            renderizzato.</p>
+
+        <pre>
+           <code>
+               // Commento non renderizzato
+
+               /* Commento renderizzato */
+           </code>
+        </pre>
+
+
+    </div>
+
+
+    <div class="fooReveal">
+        <h4>@import</h4>
+
+        <p>Si importano file esterni con <code>@import</code>. A differenza del CSS tradizionale, questa modalità
+            inserisce realmente il file nel risultato finale. In questo modo si evitano chiamate inutili.</p>
+
+        <pre>
+           <code>
+               @import "buttons";
+           </code>
+        </pre>
+        <p>Da notare che non si inserisce l'estensione del file.</p>
+
+        <p>Si usano file "partial" da inglobare nel file principale, che non vengono compilati a loro volta per non
+            creare file inutili. I file partial sono seguiti da un "_"</p>
+
+    </div>
+
+    <div class="fooReveal">
+        <h4>Nesting</h4>
+
+        <p>Forse la feature più utile dell'SCSS: si possono innestare dei selettori all'interno l'uni degli altri per
+            avere una selezione a "discesa" più immediata ed efficace</p>
+        <pre>
+           <code>
+               .contenitore{
+
+               .figlio{
+               proprietà: &lt;valore&gt;
+               }
+
+               }
+           </code>
+        </pre>
+        <p>La cosa più interessante è l'utilizzo del selettore ampersand <code>&</code> che permette di selezionare il
+            parent del selettore. E' perfetto per definire ad esempio i vari stati di un pulsante:</p>
+        <pre>
+           <code>
+               .btn{
+
+               &:hover{
+               color: blue;
+               }
+
+               &:active{
+               color: red;
+               }
+
+               }
+           </code>
+        </pre>
+        <p>Molto utile per la selezione di un padre e l'animazione dei figli all'interno. Sarà fondamentale per la
+            definizione delle media query.</p>
+
+        <p>Attenzione a non innestare troppo i selettori, rendendo quasi impossibile un override. Si dovrebbe rimanere
+            entro 3-4 livelli massimi di innestamento.</p>
+
+    </div>
+
+    <div class="fooReveal">
+        <h4>Variabili</h4>
+
+        <p>Anche le variabili sono un punto di forza dell'SCSS. E' possibile dare un significato ai valori che inseriamo
+            nel nostro CSS, facilitando la sostituzione. In questo modo è molto semplice creare temi diversi per il
+            nostro sito.</p>
+
+        <p>Si definiscono con il carattere <code>$</code> e un nome. </p>
+
+        <pre>
+           <code>
+               $primary-color: blue;
+           </code>
+        </pre>
+
+        <p>Può avere molti valori: stringhe, colori, null...</p>
+
+
+    </div>
+
+
+    <div class="fooReveal">
+        <h4>Interpolazione</h4>
+
+        <p>Molto utile nella composizione di mixin e funzioni. Permette di utilizzare un variabile come parte di codice.
+            Si utilizza con la sintassi copiata da Ruby <code>#{$variabile}</code></p>
+        <pre>
+           <code>
+               $side: top;
+
+               .margin{
+               margin-#{$side}: 20px;
+               }
+
+           </code>
+        </pre>
+
+    </div>
+
+    <div class="fooReveal">
+        <h4>Mixin</h4>
+
+        <p>I mixin sono pezzi di codice riutilizzabile, si definiscono iniziando con <code>@mixin</code> e inserendo un
+            nome e il contenuto della regola. Per "richiamare" un mixin si usa <code>@include</code></p>
+
+        <pre>
+           <code>
+               @mixin border-radius($radius) {
+               -webkit-border-radius: $radius;
+               -moz-border-radius: $radius;
+               -ms-border-radius: $radius;
+               border-radius: $radius;
+               }
+
+               @include border-radius(10px);
+
+
+           </code>
+        </pre>
+
+        <p>Ma allora che differenza c'è con una normale regola CSS? Il fatto che possiamo passare degli argomenti, come
+            in una funzione: <code>$radius</code></p>
+
+        <p>Tramite la virgola è possibile mettere anche più di un argomento <code>half-gradient($left-color,
+            $right-color)</code></p>
+
+        <p>Inserendo un valore si setta il valore di default. In questo modo il compilatore non va in errore se non si
+            passa un argomento:</p>
+
+
+        <pre>
+            <code>
+                @mixin border-radius($radius: 10px, $vertical-radius: 10px) {
+                border-radius: #{$radius} / #{$vertical-radius};
+                }
+
+                .foo {
+                @include border-radius($vertical-radius: 25px);
+                }
+            </code>
+
+
+        </pre>
+
+    </div>
+
+
+    <div class="fooReveal">
+        <h4>Math + color</h4>
+
+        <p>E' possibile eseguire operazioni matematiche come ad esempio divisioni (ad esempio per la creazione di
+            griglie o per la definizione di variazioni di font)</p>
+
+        <p>Si possono sommare i colori, ad esempio questo è il risultato di <code>background-color: #ff0000 +
+            #00ff00;</code>, ovvero <code>#ffff00 (yellow)</code></p>
+
+        <br/><br/>
+
+        <div class="color sum"></div>
+
+        <br/><br/>
+
+        <p>Specificatamente per i colori esistono diversi vantaggi interessanti:</p>
+
+        <ul>
+            <li>RGBA automatico - basta inserire il colore esadecimale e si evita di dover cercare il corrispettivo RGB
+                <code>rgba(#ffff00, 0.8)</code></li>
+            <li>Funzioni per colori: esistono dei modificatori appositi che generano ogni tipo di risultato <code>invert($color)</code>
+                - <a href="http://sass-lang.com/documentation/Sass/Script/Functions.html">Lista funzioni</a></li>
+        </ul>
+        <br/>
+
+        <p>Esempio invert</p>
+
+        <a href="http://colorschemedesigner.com/csd-3.5/">Color Scheme Designer</a> (usa #5C0DAC) | <a
+            href="http://jim-nielsen.com/sassme/">Sass Me</a>
+
+        <br/><br/><br/>
+
+        <div class="color invert-seed"></div>
+
+        <div class="color invert"></div>
+
+        <br/><br/>
+
+        <p>Esempio tone</p>
+
+        <div class="color tone-1">20%</div>
+        <div class="color tone-2">40%</div>
+        <div class="color tone-3">60%</div>
+        <div class="color tone-4">80%</div>
+        <div class="color tone-5">100%</div>
+
+
+    </div>
+
+    <div class="fooReveal">
+        <h4>Extend</h4>
+
+        <p>Si può estendere una classe precedentemente dichiarata. In pratica prende il contenuto di quella classe e lo
+            copia.</p>
+
+        <p>Caso d'uso molto interessante: voglio applicare un set di icone a una serie di codici esistenti che mi
+            vengono forniti dal server. Posso "estendere" la classe dell'icona che mi serve e sostituirla con il mio
+            codice: in questo modo posso applicare più faclmente le icone con i miei codici direttamente.</p>
+
+        <pre>
+            <code>
+                .mia-nome-icona{
+                @extend .icona-set-icone-esistente;
+                }
+            </code>
+
+
+        </pre>
+
+    </div>
+
+    <div class="fooReveal">
+        <h4>Functions</h4>
+
+        <p>Le funzioni permettono di ottenere un risultato che può essere utilizzato nella definizione ad esempio della
+            larghezza di colonne.</p>
+
+        <p>Il codice sottostante simula il calcolo che viene utilizzato da Bootsrap per la generazione delle sue
+            colonne:</p>
+
+        <pre>
+            <code>
+                $col-count: 12;
+
+                @function col-pct($columns) {
+                @return unquote((100/$col-count)*$columns+"%");
+                }
+
+                .col-6 { width: col-pct(6);}
+
+                risultato: .col-6 { width: 50%; }
+            </code>
+
+        </pre>
+
+        <p>"Unquote" serve per rimuovere le virgolette dalla stringa (che vengono messe nel momento in cui si aggiunge
+            +"%")</p>
+
+    </div>
+
+    <div class="fooReveal">
+        <h4>Loops</h4>
+
+        <p>Funzionalità utilissima per caricare ad esempio le immagini da una cartella.</p>
+
+        <p>Utilizzando questo loop, ad esempio, per aggiungere un immagine a questa sequenza, basterà aggiungere il nome
+            nell'array e aggiungere un div con la classe - il nome del file:</p>
+
+        <pre>
+            <code>
+                $img-names: linee quadrati frecce;
+
+                @each $img-name in $img-names {
+
+                .image-#{$img-name}{
+                background-image: url(../img/img-#{$img-name}.jpeg);
+                }
+
+                }
+            </code>
+
+        </pre>
+
+        <br/><br/>
+
+        <div class="image-box image-linee"></div>
+        <div class="image-box image-quadrati"></div>
+        <div class="image-box image-frecce"></div>
+
+        <p>Esistono anche <code>@for</code> e <code>@while</code></p>
+
+    </div>
+
+    <div class="fooReveal">
+        <h4>Responsive</h4>
+
+        <p>Probabilmente la funzionalità più importante dell'SCSS. Senza questo compliatore, la dichiarazione dei vari
+            stati di un elemento rispetto a diverse media-queries, avviene nel file CSS in punti molto distanti tra
+            loro.</p>
+
+        <p>E' molto difficile gestire le diverse visualizzazioni dell'elemento in questo modo. Al contrario, l'SCSS
+            offre la possibilità di innestare le media-queries nell'elemento, rendendo immediatamente riconoscibili le
+            diverse visualizzazioni.</p>
+
+        <pre>
+            <code>
+                .elemento{
+                    @extend .color;
+
+                    width: 100%;
+
+
+                    /* Extra small devices (phones, less than 768px) */
+                    /* No media query since this is the default in Bootstrap */
+
+                    background-color: #5C0DAC;
+
+                    /* Small devices (tablets, 768px and up) */
+                    @media (min-width:$screen-sm-min) {
+                        background-color: red;
+                    }
+
+                    /* Medium devices (desktops, 992px and up) */
+                    @media (min-width: $screen-md-min) {
+                        background-color: yellow;
+                    }
+
+                    /* Large devices (large desktops, 1200px and up) */
+                    @media (min-width: $screen-lg-min) {
+                        background-color: green;
+                    }
+
+
+                }
+            </code>
+
+        </pre>
+
+        <br/><br/>
+
+        <p>Risultato esempio:</p>
+
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="elemento"></div>
+                </div>
+                <div class="col-md-6">
+                    <div class="elemento"></div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <p>Note: ho esteso la classe <code>.color</code> per questo elemento rettangolare.</p>
+
+    </div>
+
+    <div class="fooReveal">
+        <h4>Strumenti</h4>
+        <a href="http://livereload.com/">Live Reload</a> | <a href="https://prepros.io/">Prepros</a>
+
+
+    </div>
+
+</div>
+
+
+<script>
+    sr.reveal('.fooReveal', {duration: 1000, viewFactor: 0.7}, {container: '.fooContainer'});
+</script>
+
+</body>
+
+
+<script
+        src="https://code.jquery.com/jquery-3.1.1.min.js"
+        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+        crossorigin="anonymous"></script>
+
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+
+
+</html>
