@@ -41,19 +41,26 @@
 <body>
 
 
-<h1>SCSS</h1>
+<h1>Sass / SCSS</h1>
 
 
 <div class="fooContainer">
     <div class="fooReveal">
         <h4>Definizione</h4>
 
+
+        <a target="_blank" href="http://sass-lang.com/">Sass website</a> | <a target="_blank" href="http://sass-lang.com/documentation/file.SCSS_FOR_SASS_USERS.html">SCSS spiegato nel sito di Sass</a>
+
+        <br><br>
+
         <p>SCSS sta per Sassy CSS. Sass (Syntactically Awesome StyleSheets) è un'estensione del linguaggio CSS che
             permette di utilizzare variabili, di creare funzioni e di organizzare il foglio di stile in più file.
 
             Il linguaggio Sass si basa sul concetto di preprocessore CSS, il quale serve a definire fogli di stile con
             una forma più semplice, completa e potente rispetto ai CSS e a generare file CSS ottimizzati, aggregando le
-            strutture definite anche in modo complesso. (<a href="https://it.wikipedia.org/wiki/Sass">Wikipedia</a>)</p>
+            strutture definite anche in modo complesso. (<a target="_blank" href="https://it.wikipedia.org/wiki/Sass">Wikipedia</a>)</p>
+
+        <p>L'SCSS è una sintassi di Sass, che permette di scrivere il CSS come quello tradizionale, rendendo possibile una maggiore compatibilità tra i due. In questo modo è possibile scrivere normale CSS in un file SCSS.</p>
 
         <p>Tra le sue principali caratteristiche possiamo quindi segnalare la risoluzione di problemi come: assenza di
             variazioni (con le variabili), ripetizioni continue (con i mixin) e le dimensioni del file (con la
@@ -61,7 +68,7 @@
 
         <p>Ecco alcuni strumenti per la gestione di progetti con l'uso di SCSS</p>
 
-        <a href="https://www.jetbrains.com/idea/">IntelliJ IDEA (+ plugin File Watcher per SCSS)</a> | <a
+        <a target="_blank" href="https://www.jetbrains.com/idea/">IntelliJ IDEA (+ plugin File Watcher per SCSS)</a> | <a
             href="http://www.sassmeister.com/">SASSMeister (con compressore: Option > CSS Output)</a>
 
 
@@ -254,13 +261,13 @@
             <li>RGBA automatico - basta inserire il colore esadecimale e si evita di dover cercare il corrispettivo RGB
                 <code>rgba(#ffff00, 0.8)</code></li>
             <li>Funzioni per colori: esistono dei modificatori appositi che generano ogni tipo di risultato <code>invert($color)</code>
-                - <a href="http://sass-lang.com/documentation/Sass/Script/Functions.html">Lista funzioni</a></li>
+                - <a target="_blank" href="http://sass-lang.com/documentation/Sass/Script/Functions.html">Lista funzioni</a></li>
         </ul>
         <br/>
 
         <p>Esempio invert</p>
 
-        <a href="http://colorschemedesigner.com/csd-3.5/">Color Scheme Designer</a> (usa #5C0DAC) | <a
+        <a target="_blank" href="http://colorschemedesigner.com/csd-3.5/">Color Scheme Designer</a> (usa #5C0DAC) | <a
             href="http://jim-nielsen.com/sassme/">Sass Me</a>
 
         <br/><br/><br/>
@@ -328,6 +335,8 @@
 
         </pre>
 
+        <p>Dove con <code>(100/$col-count)</code> ottengo la grandezza di 1 colonna, che poi moltiplicata per il numero <code>(100/$col-count)*$columns</code> ottiene il valore in percentuale.</p>
+
         <p>"Unquote" serve per rimuovere le virgolette dalla stringa (che vengono messe nel momento in cui si aggiunge
             +"%")</p>
 
@@ -362,7 +371,7 @@
         <div class="image-box image-quadrati"></div>
         <div class="image-box image-frecce"></div>
 
-        <p>Esistono anche <code>@for</code> e <code>@while</code></p>
+        <p>Esistono anche <code>@for</code> (fallo per un numero preciso di volte) e <code>@while</code> (fallo fino a quando è soddisfatta questa condizione)</p>
 
     </div>
 
@@ -437,7 +446,7 @@
 
     <div class="fooReveal">
         <h4>Strumenti</h4>
-        <a href="http://livereload.com/">Live Reload</a> | <a href="https://prepros.io/">Prepros</a>
+        <a target="_blank" href="http://livereload.com/">Live Reload</a> | <a target="_blank" href="https://prepros.io/">Prepros</a> | <a href="https://github.com/FENIX-Platform-Projects/countrystat-ui/blob/develop/src/css/themes/_unified-style.scss">Stile CountrySTAT</a>
 
 
     </div>
