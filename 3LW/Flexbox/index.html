@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Flexbox</title>
+
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Space Mono -->
+    <link href="https://fonts.googleapis.com/css?family=Space+Mono" rel="stylesheet">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="src/css/style.css">
+
+
+</head>
+
+<body>
+
+
+<h1>Flexbox</h1>
+
+
+<h4>Introduzione </h4>
+
+
+<p>Flexbox è una collezione </p>
+
+<p>Il modello di layout del flexbox prevede innanzitutto la dichiarazione di un elemento contenitore e delle sue
+    proprietà di base, quindi l’impostazione del comportamento dei singoli box al suo interno. La proprietà dunque si
+    applica al contenitore</p>
+
+
+<p>Risorse</p>
+<ul>
+    <li><a href="https://philipwalton.github.io/solved-by-flexbox/" target="_blank">Solved by FlexBox (Esempi di
+        problemi risolti dal layout Flexbox)</a></li>
+</ul>
+
+<h4>display: flex; <span class="label label-warning">CSS3</span></h4>
+
+<p>Elemento a cui è applicato: <span class="label label-primary">contenitore</span></p>
+
+<p>Mostra l'elemento come un elemento flex di tipo block (prendendo tutto lo spazio della riga). Gli elementi al suo
+    interno, pur essendo normali div, si posizionano uno accanto all'altro (come se fosse stato applicato il float). Gli
+    elementi si posizionano in questo modo anche perchè la direzione di default di flex è <code>row</code>, ovvero un
+    alemento accanto all'altro secondo il main axis (fai rollover con il mouse).</p>
+
+<p>Prima di <code>display:flex</code></p>
+
+<div class="box-container">
+    <div class="box">Testo</div>
+    <div class="box">Testo</div>
+    <div class="box">Testo</div>
+    <div class="box">Testo</div>
+</div>
+
+<p>Applicando <code>display:flex</code></p>
+
+<div class="box-container flex show-axis">
+    <div class="box">Testo</div>
+    <div class="box">Testo</div>
+    <div class="box">Testo</div>
+    <div class="box">Testo</div>
+    <div class="main-axis"></div>
+    <div class="cross-axis"></div>
+</div>
+
+<h4>justify-content: flex-start; <span class="label label-warning">CSS3</span></h4>
+
+<p>Elemento a cui è applicato: <span class="label label-primary">contenitore</span></p>
+
+<p>Possibili valori: flex-start|flex-end|center|space-between|space-around|initial|inherit</p>
+
+<p>Mostra l'elemento come un elemento flex di tipo block (prendendo tutto lo spazio della riga). Gli elementi al suo
+    interno, pur essendo normali div, si posizionano uno accanto all'altro (come se fosse stato applicato il float). Gli
+    elementi si posizionano in questo modo anche perchè la direzione di default di flex è <code>row</code>, ovvero un
+    alemento accanto all'altro secondo il main axis (fai rollover con il mouse).</p>
+
+<p>Note: La differenza tra <code>space-between</code> e <code>space-around</code> è che il primo parte allineato con il
+    contenitore, il secondo inserisce uno spazio anche prima del primo e alla fine dell'ultimo. Sono come l'allineamento
+    di Illustrator "distribuisci".</p>
+
+<br/>
+
+<code>justify-content:flex-start;</code>
+
+<div class="box-container flex justify-content flex-start show-axis">
+    <div class="box">Testo</div>
+    <div class="box">Testo</div>
+    <div class="box">Testo</div>
+    <div class="box">Testo</div>
+    <div class="main-axis"></div>
+</div>
+
+<code>justify-content:flex-end;</code>
+
+<div class="box-container flex justify-content flex-end show-axis">
+    <div class="box">Testo</div>
+    <div class="box">Testo</div>
+    <div class="box">Testo</div>
+    <div class="box">Testo</div>
+    <div class="main-axis"></div>
+</div>
+
+<code>justify-content:space-between;</code>
+
+<div class="box-container flex justify-content space-between show-axis">
+    <div class="box">Testo</div>
+    <div class="box">Testo</div>
+    <div class="box">Testo</div>
+    <div class="box">Testo</div>
+    <div class="main-axis"></div>
+</div>
+
+<code>justify-content:space-around;</code>
+
+<div class="box-container flex justify-content space-around show-axis">
+    <div class="box">Testo</div>
+    <div class="box">Testo</div>
+    <div class="box">Testo</div>
+    <div class="box">Testo</div>
+    <div class="main-axis"></div>
+</div>
+
+
+<h4>display: inline-flex; <span class="label label-warning">CSS3</span></h4>
+
+<p>Elemento a cui è applicato: <span class="label label-primary">contenitore</span></p>
+
+<p>Mostra l'elemento come un elemento flex di tipo inline-block (adattandosi al contenuto, comportandosi come del testo,
+    ma accettando modifiche del box model - vedere
+    <a href="http://www.quasar-1617.com/1LW/Display/index.html" target="_blank">lezione display</a>). Gli elementi al
+    suo
+    interno si comportano come nel caso del <code>display:flex</code>.</p>
+
+
+<div class="box-container flex-inline show-axis">
+    <div class="box">Testo</div>
+    <div class="box">Testo</div>
+    <div class="box">Testo</div>
+    <div class="box">Testo</div>
+    <div class="main-axis"></div>
+    <div class="cross-axis"></div>
+</div>
+
+<div class="box-container flex-inline show-axis">
+    <div class="box">Testo</div>
+    <div class="box">Testo</div>
+    <div class="box">Testo</div>
+    <div class="box">Testo</div>
+    <div class="main-axis"></div>
+    <div class="cross-axis"></div>
+</div>
+
+
+<h4>align-items: stretch; </valore> <span class="label label-warning">CSS3</span></h4>
+
+<p>Elemento a cui è applicato: <span class="label label-primary">contenitore</span></p>
+
+<p>Possibili valori: stretch | center | flex-start | flex-end | baseline | initial |inherit </p>
+
+<p>Negli esempio qui sopra possiamo notare come gli elementi all'interno si siano "espansi" fino a diventare alti come
+    il
+    contenitore. Questo dipende da un altra proprietà di base del layout flexbox, che è stata applicata di default agli
+    elementi interni, ovvero <code>align-items: stretch</code>. Questa proprietà, di fatto, non solo permette di
+    allineare gli elementi secondo il cross-axis (rollover), ma in qualche modo ne modifica anche la dimensione (nel
+    caso
+    standard la modifica in termini di altezza).</p>
+
+
+<p>Cambiando il tipo di allineamento, possiamo notare come anche la dimensione cambi. Questo tipo di allineamento
+    risulta molto utile per evitare tipi di allineamento standard che sono fuori dagli standard (vedere <a
+            href="http://www.quasar-1617.com/1LW/Centering/" target="_blank">lezione centering</a>) </p>
+
+
+<p>Da notare dunque come principalmente è la versione <code>stretch</code> a cambiare le dimensioni dell'elemento. Gli
+    altri valori posizionano gli elementi secondo l'inizio, il centro e la fine del cross-axis.</p>
+
+<p>Importante: Per allineare in alto tutti i contenitori (altrimenti la disposizione sarebbe abbastanza caotica), si usa una proprità non legata al Flex layout in particolare, ma standard CSS <code>vertical-align:top;</code></p>
+
+<p>Note: In pratica è il settaggio perpendicolare al <code>justify-content</code>, con l'aggiunta si stretch, e la
+    mancanza di space-between e space-around.</p>
+
+<div class="box-container flex-inline show-axis align-items stretch">
+    <code>align-items:stretch</code>
+
+    <div class="box">Testo</div>
+    <div class="box">Testo</div>
+    <div class="box">Testo</div>
+    <div class="box">Testo</div>
+    <div class="cross-axis"></div>
+</div>
+
+<div class="box-container flex-inline show-axis align-items center">
+    <code>align-items:center</code>
+
+    <div class="box">Testo</div>
+    <div class="box">Testo</div>
+    <div class="box">Testo</div>
+    <div class="box">Testo</div>
+    <div class="cross-axis"></div>
+</div>
+
+<div class="box-container flex-inline show-axis align-items flex-start">
+    <code>align-items:flex-start</code>
+
+    <div class="box">Testo</div>
+    <div class="box">Testo</div>
+    <div class="box">Testo</div>
+    <div class="box">Testo</div>
+    <div class="cross-axis"></div>
+</div>
+
+<div class="box-container flex-inline show-axis align-items flex-end">
+    <code>align-items:flex-end</code>
+
+    <div class="box">Testo</div>
+    <div class="box">Testo</div>
+    <div class="box">Testo</div>
+    <div class="box">Testo</div>
+    <div class="cross-axis"></div>
+</div>
+
+<div class="box-container flex-inline show-axis align-items baseline">
+    <code>align-items:baseline</code>
+
+    <div class="box">Testo</div>
+    <div class="box">Testo</div>
+    <div class="box">Testo</div>
+    <div class="box">Testo</div>
+    <div class="cross-axis"></div>
+</div>
+
+
+<h4>flex-direction: row; </valore> <span class="label label-warning">CSS3</span></h4>
+
+<p>Elemento a cui è applicato: <span class="label label-primary">contenitore</span></p>
+
+<p>Possibili valori: row|row-reverse|column|column-reverse|initial|inherit</p>
+
+<p>In pratica è una delle proprietà più importanti del flex-layout, in quanto cambia radicalmente la direzione degli elementi inclusi nel contenitore flex.</p>
+
+<p>Notare come cambiano radicalmente anche i due assi di riferimento, in quanto la direzione della disposizione degli elementi cambia perpedicolarmente (fai roll-over sui contenitori)</p>
+
+
+<code>flex-direction:row;</code>
+<div class="box-container flex show-axis flex-direction row">
+    <div class="box">Testo</div>
+    <div class="box">Testo</div>
+    <div class="box">Testo</div>
+    <div class="box">Testo</div>
+    <div class="main-axis"></div>
+    <div class="cross-axis"></div>
+</div>
+
+<code>flex-direction:row-reverse;</code>
+<div class="box-container flex show-axis reverse flex-direction row-reverse">
+    <div class="box">Testo</div>
+    <div class="box">Testo</div>
+    <div class="box">Testo</div>
+    <div class="box">Testo</div>
+    <div class="main-axis"></div>
+    <div class="cross-axis"></div>
+</div>
+
+<code>flex-direction:column;</code>
+<div class="box-container flex show-axis perp flex-direction column">
+    <div class="box">Testo</div>
+    <div class="box">Testo</div>
+    <div class="box">Testo</div>
+    <div class="box">Testo</div>
+    <div class="main-axis"></div>
+    <div class="cross-axis"></div>
+</div>
+
+<code>flex-direction:column-reverse;</code>
+<div class="box-container flex show-axis perp-reverse flex-direction column-reverse">
+    <div class="box">Testo</div>
+    <div class="box">Testo</div>
+    <div class="box">Testo</div>
+    <div class="box">Testo</div>
+    <div class="main-axis"></div>
+    <div class="cross-axis"></div>
+</div>
+
+<p>Notiamo come cambia anche l'allineamento tramite align-items quando cambia la direzione del main-axis:</p>
+<br/>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3">
+            <code>flex-direction:column; <br> align-items:stretch</code>
+            <div class="box-container mini flex show-axis perp flex-direction column align-items stretch">
+                <div class="box">Testo</div>
+                <div class="box">Testo</div>
+                <div class="box">Testo</div>
+                <div class="box">Testo</div>
+                <div class="main-axis"></div>
+                <div class="cross-axis"></div>
+            </div>
+
+        </div>
+        <div class="col-sm-3">
+            <code>flex-direction:column;<br> align-items:center</code>
+            <div class="box-container mini flex show-axis perp flex-direction column align-items center">
+                <div class="box">Testo</div>
+                <div class="box">Testo</div>
+                <div class="box">Testo</div>
+                <div class="box">Testo</div>
+                <div class="main-axis"></div>
+                <div class="cross-axis"></div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <code>flex-direction:column;<br> align-items:flex-start</code>
+            <div class="box-container mini flex show-axis perp flex-direction column align-items flex-start">
+                <div class="box">Testo</div>
+                <div class="box">Testo</div>
+                <div class="box">Testo</div>
+                <div class="box">Testo</div>
+                <div class="main-axis"></div>
+                <div class="cross-axis"></div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <code>flex-direction:column;<br> align-items:flex-end</code>
+            <div class="box-container mini flex show-axis perp flex-direction column align-items flex-end">
+                <div class="box">Testo</div>
+                <div class="box">Testo</div>
+                <div class="box">Testo</div>
+                <div class="box">Testo</div>
+                <div class="main-axis"></div>
+                <div class="cross-axis"></div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<p>E il justify-content:</p>
+<br/>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3">
+            <code>flex-direction:column;<br> align-items:stretch <br/> justify-content space-between</code>
+            <div class="box-container mini flex show-axis perp flex-direction column align-items stretch justify-content space-between">
+                <div class="box">Testo</div>
+                <div class="box">Testo</div>
+                <div class="box">Testo</div>
+                <div class="box">Testo</div>
+                <div class="main-axis"></div>
+                <div class="cross-axis"></div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <code>flex-direction:column;<br> align-items:stretch <br/> justify-content space-around</code>
+            <div class="box-container mini flex show-axis perp flex-direction column align-items stretch justify-content space-around">
+                <div class="box">Testo</div>
+                <div class="box">Testo</div>
+                <div class="box">Testo</div>
+                <div class="box">Testo</div>
+                <div class="main-axis"></div>
+                <div class="cross-axis"></div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+
+
+
+
+<h4>flex-basis: &lt;valore&gt; </valore> <span class="label label-warning">CSS3</span></h4>
+
+<p>Elemento a cui è applicato: <span class="label label-info">elemento</span></p>
+
+<p>Possibili valori: px | % | em </p>
+
+<p>Note bene: quando la <code>flex-direction: row</code> controlla la width, quando invece <code>flex-direction:
+    column</code>, coontrolla l'altezza.</p>
+
+
+<h4>flex-shrink: &lt;valore&gt; <span class="label label-warning">CSS3</span></h4>
+
+<p>Elemento a cui è applicato: <span class="label label-info">elemento</span></p>
+
+<p>GLi elementi flex si restringono di default, per evitare l'overflow del contenitore padre. Per evirare che si
+    riducano bisogna settare a 0 il fattore di shrink, con la proprietà <code>flex-shrink</code>.</p>
+
+<p>Possibili valori: valore numerico - default <code>flex-shrink:1</code></p>
+
+
+</body>
+
+<script
+        src="https://code.jquery.com/jquery-3.1.1.min.js"
+        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+        crossorigin="anonymous"></script>
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+
+
+</html>

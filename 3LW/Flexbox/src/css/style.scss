@@ -1,0 +1,376 @@
+/* Demo */
+
+body{
+  background-color: #ddd;
+  font-family: 'Space Mono', monospace;
+  padding: 20px;
+
+}
+
+h4{
+  margin-top: 150px;
+  margin-bottom: 30px;
+}
+
+.website{
+  background-color: white;
+}
+
+.box-container{
+  border: 1px dashed #666;
+  margin: 20px;
+  //width: 400px;
+  position: relative;
+  height: 200px;
+  resize: both;
+  overflow: visible;
+  //flex-wrap: wrap;
+  //align-content: flex-start;
+
+  &.mini{
+	width: 150px;
+	height: 160px;
+	margin: 10px;
+  }
+
+}
+
+
+$main-axis-color: blue;
+$cross-axis-color: red;
+
+
+
+.main-axis{
+  width: 100%;
+  height: 1px;
+  top: 50%;
+  position: absolute;
+  border: 1px dashed $main-axis-color;
+  transition: all 0.3s ease-in-out;
+  opacity: 0;
+
+  &:before{
+	content:"Main axis";
+	top: -20px;
+	left: 0;
+	position: absolute;
+	color: $main-axis-color ;
+	transition: all 0.3s ease-in-out;
+
+  }
+
+  &:after{
+	content:"";
+	width: 0;
+	height: 0;
+	position: absolute;
+	right: 0;
+	top: -7px;
+
+	border-style: solid;
+	border-width: 7px 0 7px 10px;
+	border-color: transparent transparent transparent $main-axis-color;
+
+  }
+
+}
+
+.cross-axis{
+  width: 1px;
+  height: 100%;
+  top: 0;
+  left: 50%;
+  position: absolute;
+  border: 1px dashed $cross-axis-color;
+  transition: all 0.3s ease-in-out;
+  opacity: 0;
+
+  &:before{
+	content:"Cross axis";
+	top: 0;
+	left: 20px;
+	position: absolute;
+	color: $cross-axis-color ;
+	transition: all 0.3s ease-in-out;
+
+  }
+
+  &:after{
+	content:"";
+	width: 0;
+	height: 0;
+	position: absolute;
+	right: -7px;
+	bottom: 0;
+	border-style: solid;
+	border-width: 10px 7px 0 7px;
+	border-color: $cross-axis-color transparent transparent transparent;
+
+
+  }
+
+}
+
+.show-axis{
+
+
+  &.reverse{
+
+	.main-axis{
+
+	  &:before{
+		right: 0;
+		left: auto;
+	  }
+
+
+	  &:after{
+		transform: rotate(180deg);
+		left: 0;
+	  }
+
+	}
+
+  }
+
+  &.perp, &.perp-reverse {
+
+	.main-axis {
+	  width: 1px;
+	  height: 100%;
+	  top: 0;
+	  left: 50%;
+	  position: absolute;
+	  border: 1px dashed $main-axis-color;
+	  transition: all 0.3s ease-in-out;
+	  opacity: 0;
+
+	  &:before{
+		content:"Main axis";
+		top: 0;
+		left: 20px;
+		position: absolute;
+		color: $main-axis-color;
+		transition: all 0.3s ease-in-out;
+
+	  }
+
+	  &:after{
+		content:"";
+		width: 0;
+		height: 0;
+		position: absolute;
+		right: -7px;
+		top: auto;
+		bottom: 0;
+		border-style: solid;
+		border-width: 10px 7px 0 7px;
+		border-color: $main-axis-color transparent transparent transparent;
+
+
+	  }
+
+	}
+
+	.cross-axis {
+	  width: 100%;
+	  height: 1px;
+	  top: 50%;
+	  left: 0;
+	  position: absolute;
+	  border: 1px dashed $cross-axis-color;
+	  transition: all 0.3s ease-in-out;
+	  opacity: 0;
+
+	  &:before{
+		content:"Cross axis";
+		top: -20px;
+		left: 0;
+		position: absolute;
+		color: $cross-axis-color;
+		transition: all 0.3s ease-in-out;
+
+	  }
+
+	  &:after{
+		content:"";
+		width: 0;
+		height: 0;
+		position: absolute;
+		right: 0;
+		top: -7px;
+
+		border-style: solid;
+		border-width: 7px 0 7px 10px;
+		border-color: transparent transparent transparent $cross-axis-color;
+
+	  }
+
+	}
+
+  }
+
+  &.perp-reverse{
+
+	.main-axis {
+	  width: 1px;
+	  height: 100%;
+	  top: 0;
+	  left: 50%;
+	  position: absolute;
+	  border: 1px dashed $main-axis-color;
+	  transition: all 0.3s ease-in-out;
+	  opacity: 0;
+
+	  &:before{
+		top: auto;
+		bottom: 0;
+	  }
+
+	  &:after{
+		transform: rotate(180deg);
+		top: 0;
+		bottom: auto;
+	  }
+
+	}
+
+  }
+
+
+  &:hover{
+
+	.main-axis{
+	  opacity: 1;
+	}
+
+	.cross-axis{
+	  opacity: 1;
+	}
+
+  }
+}
+
+
+
+.box{
+  //flex-basis: 200px;
+  //width: 200px;
+  //flex-grow: 1;
+  //flex-shrink: 0;
+  color: white;
+  background-color: DodgerBlue;
+  border: 1px solid white;
+  margin: 5px;
+  transition: width 2s ease-in-out;
+  display: flex;
+  //flex-direction: column;
+  //justify-content: center;
+  //text-align: center;
+}
+
+
+
+/* Content */
+
+
+.flex{
+  display: flex;
+}
+
+.flex-inline{
+  display: inline-flex;
+}
+
+
+.justify-content{
+
+  &.center{
+	justify-content: center;
+  }
+
+  &.flex-start{
+	justify-content: flex-start;
+  }
+
+  &.flex-end{
+	justify-content: flex-end;
+  }
+
+  &.space-between{
+	justify-content: space-between;
+  }
+
+  &.space-around{
+	justify-content: space-around;
+  }
+
+
+
+}
+
+
+.flex-direction{
+
+  &.row{
+	flex-direction: row;
+  }
+
+  &.row-reverse{
+	flex-direction: row-reverse;
+  }
+
+  &.column{
+	flex-direction: column;
+  }
+
+  &.column-reverse{
+	flex-direction: column-reverse;
+  }
+
+
+}
+
+.align-items{
+
+  margin-top: 50px;
+  vertical-align:top; /* Non Flex CSS */
+
+
+  code{
+	position: absolute;
+	top: -30px;
+	left: 0;
+  }
+
+  &.stretch{
+	align-items: stretch;
+  }
+
+
+  &.center{
+	align-items: center;
+  }
+
+  &.flex-start{
+	align-items: flex-start;
+  }
+
+  &.flex-end{
+	align-items: flex-end;
+  }
+
+  &.baseline{
+	align-items: baseline;
+  }
+
+
+}
+
+
+
+
+
+
+

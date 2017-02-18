@@ -1,0 +1,211 @@
+/* Demo */
+body {
+  background-color: #ddd;
+  font-family: 'Space Mono', monospace;
+  padding: 20px; }
+
+h4 {
+  margin-top: 150px;
+  margin-bottom: 30px; }
+
+.website {
+  background-color: white; }
+
+.box-container {
+  border: 1px dashed #666;
+  margin: 20px;
+  position: relative;
+  height: 200px;
+  resize: both;
+  overflow: visible; }
+  .box-container.mini {
+    width: 150px;
+    height: 160px;
+    margin: 10px; }
+
+.main-axis {
+  width: 100%;
+  height: 1px;
+  top: 50%;
+  position: absolute;
+  border: 1px dashed blue;
+  transition: all 0.3s ease-in-out;
+  opacity: 0; }
+  .main-axis:before {
+    content: "Main axis";
+    top: -20px;
+    left: 0;
+    position: absolute;
+    color: blue;
+    transition: all 0.3s ease-in-out; }
+  .main-axis:after {
+    content: "";
+    width: 0;
+    height: 0;
+    position: absolute;
+    right: 0;
+    top: -7px;
+    border-style: solid;
+    border-width: 7px 0 7px 10px;
+    border-color: transparent transparent transparent blue; }
+
+.cross-axis {
+  width: 1px;
+  height: 100%;
+  top: 0;
+  left: 50%;
+  position: absolute;
+  border: 1px dashed red;
+  transition: all 0.3s ease-in-out;
+  opacity: 0; }
+  .cross-axis:before {
+    content: "Cross axis";
+    top: 0;
+    left: 20px;
+    position: absolute;
+    color: red;
+    transition: all 0.3s ease-in-out; }
+  .cross-axis:after {
+    content: "";
+    width: 0;
+    height: 0;
+    position: absolute;
+    right: -7px;
+    bottom: 0;
+    border-style: solid;
+    border-width: 10px 7px 0 7px;
+    border-color: red transparent transparent transparent; }
+
+.show-axis.reverse .main-axis:before {
+  right: 0;
+  left: auto; }
+.show-axis.reverse .main-axis:after {
+  transform: rotate(180deg);
+  left: 0; }
+.show-axis.perp .main-axis, .show-axis.perp-reverse .main-axis {
+  width: 1px;
+  height: 100%;
+  top: 0;
+  left: 50%;
+  position: absolute;
+  border: 1px dashed blue;
+  transition: all 0.3s ease-in-out;
+  opacity: 0; }
+  .show-axis.perp .main-axis:before, .show-axis.perp-reverse .main-axis:before {
+    content: "Main axis";
+    top: 0;
+    left: 20px;
+    position: absolute;
+    color: blue;
+    transition: all 0.3s ease-in-out; }
+  .show-axis.perp .main-axis:after, .show-axis.perp-reverse .main-axis:after {
+    content: "";
+    width: 0;
+    height: 0;
+    position: absolute;
+    right: -7px;
+    top: auto;
+    bottom: 0;
+    border-style: solid;
+    border-width: 10px 7px 0 7px;
+    border-color: blue transparent transparent transparent; }
+.show-axis.perp .cross-axis, .show-axis.perp-reverse .cross-axis {
+  width: 100%;
+  height: 1px;
+  top: 50%;
+  left: 0;
+  position: absolute;
+  border: 1px dashed red;
+  transition: all 0.3s ease-in-out;
+  opacity: 0; }
+  .show-axis.perp .cross-axis:before, .show-axis.perp-reverse .cross-axis:before {
+    content: "Cross axis";
+    top: -20px;
+    left: 0;
+    position: absolute;
+    color: red;
+    transition: all 0.3s ease-in-out; }
+  .show-axis.perp .cross-axis:after, .show-axis.perp-reverse .cross-axis:after {
+    content: "";
+    width: 0;
+    height: 0;
+    position: absolute;
+    right: 0;
+    top: -7px;
+    border-style: solid;
+    border-width: 7px 0 7px 10px;
+    border-color: transparent transparent transparent red; }
+.show-axis.perp-reverse .main-axis {
+  width: 1px;
+  height: 100%;
+  top: 0;
+  left: 50%;
+  position: absolute;
+  border: 1px dashed blue;
+  transition: all 0.3s ease-in-out;
+  opacity: 0; }
+  .show-axis.perp-reverse .main-axis:before {
+    top: auto;
+    bottom: 0; }
+  .show-axis.perp-reverse .main-axis:after {
+    transform: rotate(180deg);
+    top: 0;
+    bottom: auto; }
+.show-axis:hover .main-axis {
+  opacity: 1; }
+.show-axis:hover .cross-axis {
+  opacity: 1; }
+
+.box {
+  color: white;
+  background-color: DodgerBlue;
+  border: 1px solid white;
+  margin: 5px;
+  transition: width 2s ease-in-out;
+  display: flex; }
+
+/* Content */
+.flex {
+  display: flex; }
+
+.flex-inline {
+  display: inline-flex; }
+
+.justify-content.center {
+  justify-content: center; }
+.justify-content.flex-start {
+  justify-content: flex-start; }
+.justify-content.flex-end {
+  justify-content: flex-end; }
+.justify-content.space-between {
+  justify-content: space-between; }
+.justify-content.space-around {
+  justify-content: space-around; }
+
+.flex-direction.row {
+  flex-direction: row; }
+.flex-direction.row-reverse {
+  flex-direction: row-reverse; }
+.flex-direction.column {
+  flex-direction: column; }
+.flex-direction.column-reverse {
+  flex-direction: column-reverse; }
+
+.align-items {
+  margin-top: 50px;
+  vertical-align: top;
+  /* Non Flex CSS */ }
+  .align-items code {
+    position: absolute;
+    top: -30px;
+    left: 0; }
+  .align-items.stretch {
+    align-items: stretch; }
+  .align-items.center {
+    align-items: center; }
+  .align-items.flex-start {
+    align-items: flex-start; }
+  .align-items.flex-end {
+    align-items: flex-end; }
+  .align-items.baseline {
+    align-items: baseline; }
