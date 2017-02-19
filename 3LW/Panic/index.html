@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <title>Panic</title>
 
-
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -159,10 +160,55 @@
      data-blocksize='320x320'
      data-frames='33'
      data-fps='25'
-     data-autoplay='true'
+     data-autoplay='false'
      data-autoload='true'
      data-retina='false'
         ></div>
+
+
+<div class="pink-floyd">
+
+
+
+    <img src="src/img/pink-floyd.jpg" alt="Pink Floyd"/>
+
+    <div id='fire'
+         data-baseurl='src/img/fire'
+         data-grid='4x6'
+         data-blocksize='150x84'
+         data-frames='24'
+         data-fps='23'
+         data-autoplay='true'
+         data-autoload='true'
+         data-retina='false'
+            ></div>
+
+    <div id='fire_small'
+         data-baseurl='src/img/fire_small'
+         data-grid='4x6'
+         data-blocksize='50x28'
+         data-frames='24'
+         data-fps='23'
+         data-autoplay='true'
+         data-autoload='true'
+         data-retina='false'
+            ></div>
+
+    <div id='fire_small2'
+         data-baseurl='src/img/fire_small'
+         data-grid='4x6'
+         data-blocksize='50x28'
+         data-frames='24'
+         data-fps='23'
+         data-autoplay='true'
+         data-autoload='true'
+         data-retina='false'
+            ></div>
+
+</div>
+
+
+
 
 <br><br><br><br><br><br>
 
@@ -188,6 +234,21 @@
 <script>
     jQuery(function ($) {
         $('#mySpriteAnimation').spriteanim();
+
+    });
+
+    jQuery(function ($) {
+        $('#fire').spriteanim('frame', 16);
+
+    });
+
+    jQuery(function ($) {
+        $('#fire_small').spriteanim();
+
+    });
+
+    jQuery(function ($) {
+        $('#fire_small2').spriteanim('frame', 5);
 
     });
 </script>

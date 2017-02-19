@@ -62,3 +62,39 @@ h4{
 	height: 320px;
 	background: url('../img/sprite0.png');
 }
+
+.pink-floyd{
+	width: 400px;
+	position: relative;
+
+
+}
+
+.pink-floyd img{
+	width: 500px;
+	height: auto;
+}
+
+#fire{
+	position: absolute !important;
+	top: 195px;
+	left: 252px;
+	transform: rotate(65deg);
+	opacity: 0.9;
+}
+
+#fire_small{
+	position: absolute !important;
+	top: 375px;
+	left: 309px;
+	transform: rotate(65deg);
+	opacity: 0.9;
+}
+
+#fire_small2{
+	position: absolute !important;
+	top: 329px;
+	left: 293px;
+	transform: rotate(102deg) scale(-1, 0.7);
+	opacity: 0.9;
+}
