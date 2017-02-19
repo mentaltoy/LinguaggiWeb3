@@ -1,0 +1,126 @@
+/* Holy grail step-style */
+
+.HolyGrail-content, .HolyGrail-nav, .HolyGrail-ads, header, footer {
+  padding: 15px;
+}
+
+.HolyGrail-img{
+  width: 100px;
+  height: auto;
+
+}
+
+.svg-bg-color{
+  fill: #555;
+}
+
+.svg-ico-color{
+  fill: #ddd;
+}
+
+// Passaggio 1
+
+// Aggiungo "solo" display: flex, con direzione colonna
+
+
+html, body{
+  height: 100%; // Il classico settaggio per poter lavorare con flex e tutta la pagina
+}
+
+.HolyGrail{
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+header{
+  border-bottom: 1px solid #999;
+}
+
+footer{
+  background-color: #555;
+  color: #ddd;
+  flex-basis: 200px; // Notare come in questo caso flex-basis controlli l'altezza del footer e non la larghezza (come nelle colonne ad esempio)
+  flex-shrink: 0;
+}
+
+
+.HolyGrail-body{
+  flex-grow: 1; // E dico al body del sito di ingrandirsi, spingendo il footer in basso...già questo è qualcosa che era impossibile da fare precedentemente. Abbiamo realizzato uno "sticky footer", a prescindere dall'altezza del footer (aggiungere la parte sotto mi raccomando)
+  flex-shrink: 0; // IMPORTANTISSIMO!!! Bug - (http://bit.ly/1Mn35US) - In questo modo si evita invece che il contenitore si restringa al di sotto della grandezza del contenuto (e vale per tutte e 3 le colonne)
+}
+
+.HolyGrail-content{
+
+}
+
+.HolyGrail-nav{
+  background-color: #ccc;
+}
+
+.HolyGrail-ads{
+  background-color: #ccc;
+}
+
+
+
+
+
+
+
+
+
+
+// Passaggio 2
+
+// Questa parte serve invece per avere colonne nel body del sito. Non cambiamo infatti la direzione del footer apposta proprio per lasciare il normale layout proposto da flex (ovvero row - anche se sono colonne)
+
+
+.HolyGrail-body{
+  display: flex; // Questo va messo fuori dalla media query perchè altrimenti non funzionerebbe l'istruzione qui sotto. Di conseguenza va cambiata la direzione flex con la media query
+  flex-direction: column;
+}
+
+.HolyGrail-nav{
+  order: -1; // Posiziona la colonna nav per prima, anche se il contenuto sarebbe il primo nell'html - Questo settaggio è fuori dalla media query perchè voglio mantenerlo anche sul mobile
+}
+
+@media (min-width: 768px) { // Inserisco questa disposizione nella mediaquery dei large screen, in modo da ricreare il collasso delle colonne su mobile
+
+  .HolyGrail-body{
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-direction: row; // Sarebbe il valore di default, ma ho dovuto rimetterlo per via dell'istruzione fuori dalla media query (vedi in alto)
+  }
+
+  /* Mettere questa istruzione fuori dalla media query per avere la pubblicità sempre attaccata al footer. In questo modo invece sarà sempre al di sotto del testo */
+  .HolyGrail-content{
+    flex-grow: 1; // In teoria questo non serve, se abbiamo del testo al centro della pagina. Sarà esso infatti ad allargare il contenuto centrale per prendere il massimo dello spazio
+  }
+
+  .HolyGrail-nav{
+    flex-basis: 200px; // Largezza fissa di colonna
+    flex-shrink: 0; // Inserire se si vuole mantenere la larghezza fissa anche quando non c'è spazio per mantenerla
+  }
+
+  .HolyGrail-ads{
+    flex-basis: 200px;  // Largezza fissa di colonna
+    flex-shrink: 0; // Inserire se si vuole mantenere la larghezza fissa anche quando non c'è spazio per mantenerla
+  }
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

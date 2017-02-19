@@ -1,0 +1,66 @@
+@charset "UTF-8";
+/* Holy grail step-style */
+.HolyGrail-content, .HolyGrail-nav, .HolyGrail-ads, header, footer {
+  padding: 15px; }
+
+.HolyGrail-img {
+  width: 100px;
+  height: auto; }
+
+.svg-bg-color {
+  fill: #555; }
+
+.svg-ico-color {
+  fill: #ddd; }
+
+html, body {
+  height: 100%; }
+
+.HolyGrail {
+  padding: 0;
+  display: flex;
+  flex-direction: column; }
+
+header {
+  border-bottom: 1px solid #999; }
+
+footer {
+  background-color: #555;
+  color: #ddd;
+  flex-basis: 200px;
+  flex-shrink: 0; }
+
+.HolyGrail-body {
+  flex-grow: 1;
+  flex-shrink: 0; }
+
+.HolyGrail-nav {
+  background-color: #ccc; }
+
+.HolyGrail-ads {
+  background-color: #ccc; }
+
+.HolyGrail-body {
+  display: flex;
+  flex-direction: column; }
+
+.HolyGrail-nav {
+  order: -1; }
+
+@media (min-width: 768px) {
+  .HolyGrail-body {
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-direction: row; }
+
+  /* Mettere questa istruzione fuori dalla media query per avere la pubblicità sempre attaccata al footer. In questo modo invece sarà sempre al di sotto del testo */
+  .HolyGrail-content {
+    flex-grow: 1; }
+
+  .HolyGrail-nav {
+    flex-basis: 200px;
+    flex-shrink: 0; }
+
+  .HolyGrail-ads {
+    flex-basis: 200px;
+    flex-shrink: 0; } }
