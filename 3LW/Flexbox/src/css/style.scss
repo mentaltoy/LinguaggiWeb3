@@ -143,8 +143,29 @@ $cross-axis-color: red;
 
 }
 
+
+
 .show-axis{
 
+  .flex-start-label, .flex-end-label{
+	color: $main-axis-color;
+	position: absolute;
+	opacity: 0;
+	bottom: -20px;
+	transition: all 0.3s ease-in-out;
+  }
+
+  .flex-start-label{
+	left: 0;
+	border-left: 1px solid  $main-axis-color;
+	padding-left: 10px;
+  }
+
+  .flex-end-label{
+	right: 0;
+	border-right: 1px solid  $main-axis-color;
+	padding-right: 10px;
+  }
 
   &.reverse{
 
@@ -272,6 +293,28 @@ $cross-axis-color: red;
 
   &:hover{
 
+	.flex-start-label, .flex-end-label{
+	  opacity: 1;
+	}
+
+
+	.main-axis{
+	  opacity: 1;
+	}
+
+	.cross-axis{
+	  opacity: 1;
+	}
+
+  }
+
+  &.show-fixed{
+	overflow: visible;
+
+	.flex-start-label, .flex-end-label{
+	  opacity: 1;
+	}
+
 	.main-axis{
 	  opacity: 1;
 	}
@@ -382,7 +425,7 @@ $cross-axis-color: red;
 
   margin-top: 50px;
   vertical-align:top; /* Non Flex CSS */
-
+  overflow: visible;
 
   code{
 	position: absolute;

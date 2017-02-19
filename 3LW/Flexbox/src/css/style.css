@@ -88,6 +88,20 @@ article {
     border-width: 10px 7px 0 7px;
     border-color: red transparent transparent transparent; }
 
+.show-axis .flex-start-label, .show-axis .flex-end-label {
+  color: blue;
+  position: absolute;
+  opacity: 0;
+  bottom: -20px;
+  transition: all 0.3s ease-in-out; }
+.show-axis .flex-start-label {
+  left: 0;
+  border-left: 1px solid blue;
+  padding-left: 10px; }
+.show-axis .flex-end-label {
+  right: 0;
+  border-right: 1px solid blue;
+  padding-right: 10px; }
 .show-axis.reverse .main-axis:before {
   right: 0;
   left: auto; }
@@ -163,10 +177,20 @@ article {
     transform: rotate(180deg);
     top: 0;
     bottom: auto; }
+.show-axis:hover .flex-start-label, .show-axis:hover .flex-end-label {
+  opacity: 1; }
 .show-axis:hover .main-axis {
   opacity: 1; }
 .show-axis:hover .cross-axis {
   opacity: 1; }
+.show-axis.show-fixed {
+  overflow: visible; }
+  .show-axis.show-fixed .flex-start-label, .show-axis.show-fixed .flex-end-label {
+    opacity: 1; }
+  .show-axis.show-fixed .main-axis {
+    opacity: 1; }
+  .show-axis.show-fixed .cross-axis {
+    opacity: 1; }
 
 /* Content */
 .flex {
@@ -211,7 +235,8 @@ article {
 .align-items {
   margin-top: 50px;
   vertical-align: top;
-  /* Non Flex CSS */ }
+  /* Non Flex CSS */
+  overflow: visible; }
   .align-items code {
     position: absolute;
     top: -30px;
