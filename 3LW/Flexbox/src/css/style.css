@@ -35,6 +35,11 @@ article {
   transition: width 2s ease-in-out;
   display: flex; }
 
+.box-text {
+  flex: 0 1 50%;
+  border: 1px dashed #666;
+  margin: 5px; }
+
 .main-axis {
   width: 100%;
   height: 1px;
@@ -318,3 +323,24 @@ article {
   .order.featured .featured-element {
     order: -1;
     background-color: #84c2ff; }
+
+/* Esempi pratici */
+.centered-element {
+  height: 350px;
+  justify-content: center;
+  align-items: center; }
+
+.price-layout {
+  height: 600px;
+  align-items: center;
+  justify-content: center; }
+  .price-layout .box {
+    flex-grow: 1;
+    min-height: 350px;
+    background-color: #888888; }
+  .price-layout .featured-price {
+    flex-grow: 1.5;
+    min-height: 500px;
+    background-color: white; }
+
+/*# sourceMappingURL=style.css.map */

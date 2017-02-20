@@ -83,7 +83,7 @@
         Gli
         elementi si posizionano in questo modo anche perchè la direzione di default di flex è <code>row</code>, ovvero
         un
-        alemento accanto all'altro secondo il main axis (fai rollover con il mouse).</p>
+        alemento accanto all'altro secondo il main axis (vedi esempio).</p>
 
     <p>Prima di <code>display:flex</code></p>
 
@@ -816,6 +816,52 @@
     <code>flex-flow: row nowrap</code>
 
     <p>E' la shorthand per <code>flex-direction</code> e <code>flex-wrap</code></p>
+
+
+</article>
+
+<!--Esempi pratici-->
+<article>
+    <h4>Esempi pratici</h4>
+
+    <p>Posizionamento al centro (sia in altezza che in larghezza) di un elemento (a prescindere dalle sue dimensioni) rispetto ad un altro.</p>
+
+    <p>Ci ricorda molto le soluzioni standard che aveamo cercato nella <a
+            href="http://www.quasar-1617.com/1LW/Centering/" target="_blank">lezione centering</a>. In questo caso il layout però tende a "rompersi" di meno. Aggiungendo per esempio un elemento uguale nel layout.</p>
+
+    <div class="box-container flex centered-element">
+        <div class="box-text">
+            <p>	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua.
+            </p>
+        </div>
+        <!--<div class="box-text">-->
+            <!--<p>	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod-->
+                <!--tempor incididunt ut labore et dolore magna aliqua.-->
+            <!--</p>-->
+        <!--</div>-->
+
+    </div>
+
+    <br><br>
+
+    <p>Layout tabella di prezzi:</p>
+
+    <p>Anche in questo caso realizzare u layout del genere sarebbe molto complicato, ma non con Flexbox.</p>
+
+    <div class="box-container flex price-layout">
+        <div class="box">
+
+        </div>
+        <div class="box featured-price">
+
+        </div>
+
+        <div class="box">
+
+        </div>
+    </div>
+
 
 
 </article>
