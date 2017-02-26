@@ -154,9 +154,7 @@ function init() {
     // Fine Stats
 
 
-
     document.getElementById("03-enhance").appendChild(renderer3.domElement);
-
 
 
     // 04 - Orbit Controls
@@ -175,7 +173,7 @@ function init() {
     camera4.position.z = 13;
     camera4.lookAt(scene4.position);
 
-    cameraControl4 = new THREE.OrbitControls( camera4,document.getElementById("04-orbit"));
+    cameraControl4 = new THREE.OrbitControls(camera4, document.getElementById("04-orbit"));
 
     // Aggiungo il cubo
     var cubeMaterial4 = new THREE.MeshLambertMaterial({color: "red"});
@@ -196,9 +194,6 @@ function init() {
     document.getElementById("04-orbit").appendChild(renderer4.domElement);
 
 
-
-
-
     // 05 - DOM Events
 
     scene5 = new THREE.Scene();
@@ -215,7 +210,7 @@ function init() {
     camera5.position.z = 13;
     camera5.lookAt(scene4.position);
 
-    cameraControl5 = new THREE.OrbitControls( camera5,document.getElementById("05-domevent"));
+    cameraControl5 = new THREE.OrbitControls(camera5, document.getElementById("05-domevent"));
 
     // Aggiungo il cubo
     var cubeMaterial5 = new THREE.MeshLambertMaterial({color: "red"});
@@ -243,24 +238,83 @@ function init() {
 
     document.getElementById("05-domevent").appendChild(renderer5.domElement);
 
-
-    var domEvents   = new THREEx.DomEvents(camera5, renderer5.domElement);
-
-    domEvents.addEventListener(cube5, 'click', function(event){
+    // Dom Events
+    var domEvents = new THREEx.DomEvents(camera5, renderer5.domElement);
+    domEvents.addEventListener(cube5, 'click', function (event) {
         console.log('you clicked on the red mesh')
         animate(event)
     }, false);
 
-    domEvents.addEventListener(cube5b, 'click', function(event){
+    domEvents.addEventListener(cube5b, 'click', function (event) {
         console.log('you clicked on the blue mesh');
         animate(event)
     }, false);
 
-    function animate(event){
-        TweenMax.to(event.target.position, 0.1, {y:"-1",  ease:Linear.easeNone, onComplete: function(){
-            TweenMax.to(event.target.position, 0.1, {y:"0",  ease:Linear.easeNone});
-        }});
+    function animate(event) {
+        TweenMax.to(event.target.position, 0.1, {
+            y: "-1", ease: Linear.easeNone, onComplete: function () {
+                TweenMax.to(event.target.position, 0.1, {y: "0", ease: Linear.easeNone});
+            }
+        });
     }
+
+    // Linkify
+    var url = 'http://jeromeetienne.github.io/threex/'
+    var linkify = THREEx.Linkify(domEvents, cube5, url, true);
+
+
+    // 06 - Materials
+
+    scene6 = new THREE.Scene();
+
+    renderer6 = new THREE.WebGLRenderer({antialias: true, alpha: true});
+    renderer6.setClearColor(0x858585, 1.0);
+    renderer6.setSize(document.getElementById("06-material").offsetWidth, document.getElementById("06-material").offsetHeight);
+    renderer6.shadowMap.enabled = true;
+    renderer6.shadowMap.type = THREE.PCFSoftShadowMap; //Questo è per migliorare la shadow
+
+    camera6 = new THREE.PerspectiveCamera(45, document.getElementById("06-material").offsetWidth / document.getElementById("06-material").offsetHeight, 0.1, 1000);
+    camera6.position.x = 15;
+    camera6.position.y = 16;
+    camera6.position.z = 13;
+    camera6.lookAt(scene6.position);
+
+    cameraControl6 = new THREE.OrbitControls(camera6, document.getElementById("06-material"));
+
+    // Aggiungo la luce
+    var spotLight6 = new THREE.SpotLight(0xffffff);
+    spotLight6.position.set(10, 20, 20);
+    spotLight6.castShadow = true;
+    spotLight6.shadow.mapSize.width = 1024; // default is 512
+    spotLight6.shadow.mapSize.height = 1024; // default is 512
+    scene6.add(spotLight6);
+
+    // Aggiungo il cubo
+    var cube6 = new THREE.Mesh(cubeGeometry,  createComplexMaterial() );
+    cube6.castShadow = true;
+    scene6.add(cube6);
+
+    // Creo il materiale complesso
+    function createComplexMaterial() {
+
+        var earthTexture = THREE.ImageUtils.loadTexture("src/img/texture.jpg");
+        var cubeMaterial6 = new THREE.MeshPhongMaterial();
+        cubeMaterial6.map = earthTexture;
+
+        var normalMap = THREE.ImageUtils.loadTexture("src/img/normal-map.jpg");
+        cubeMaterial6.normalMap = normalMap;
+        cubeMaterial6.normalScale = new THREE.Vector2(2, 2);
+
+        return cubeMaterial6;
+    }
+
+
+
+
+
+
+
+    document.getElementById("06-material").appendChild(renderer6.domElement);
 
 }
 
@@ -292,6 +346,10 @@ function animate() {
     // DOM Events
     renderer5.render(scene5, camera5);
     cameraControl5.update();
+
+    // Material
+    renderer6.render(scene6, camera6);
+    cameraControl6.update();
 
 }
 
