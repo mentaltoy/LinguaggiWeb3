@@ -1,11 +1,18 @@
 /* Demo */
 
+body, html{
+  height: 100%;
+  width: 100%;
+}
+
 body{
   background-color: #ddd;
   font-family: 'Space Mono', monospace;
 
 
 }
+
+
 
 h1{
   padding-left: 20px;
@@ -65,5 +72,52 @@ article{
   .dg.a{
 	margin-right: 0;
   }
+
+}
+
+
+// RdC Case Study
+
+body.body-rdc{
+  overflow: hidden;
+}
+
+.article-rdc{
+  padding: 0 20px;
+  position: absolute;
+  top: 0;
+  z-index: 1;
+
+
+  h1{
+    padding-left: 0;
+    margin-bottom: 40px;
+  }
+
+}
+
+#home-intro{
+  position: absolute;
+  top: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#home-intro-scroll-sensor{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  top: 0;
+
+}
+
+#percentage{
+  color: black;
+  z-index: 5;
+  position: absolute;
+  bottom: 0;
+  right: 0;
 
 }
