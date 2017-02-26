@@ -37,8 +37,18 @@
         movimento collegato al mouse un una camera con Orbit Control. Il materiale viene caricato dalla stessa cartella
         ed è stato applicato il canale alpha. Il "sistema" non riconosce autonomamente se un oggetto ha bisogno o no di
         una texture alpha. E' per questo che bisogna inserire il nome dell'oggetto da escludere (come ad esempio la
-        "Light") nella lista dei "forbidden names". Inserendo un elemento nella lista infatti, sarà escluso dalla
-        ricerca dellla texture alpha corrispondente, la cui path viene definita alla (riga 508). </p>
+        "Light") nella lista dei "forbidden names" (riga 508). Inserendo un elemento nella lista infatti, sarà escluso dalla
+        ricerca dellla texture alpha corrispondente, la cui path viene definita alla (riga 556). </p>
+
+
+    <ul>
+        <li>Generare modello in Cinema 4D</li>
+        <li>Generare texture con Body Paint, applicare la texture come jpg e tenersi il sorgente in PSD</li>
+        <li>Generare l'eventuale alpha dalla stessa sorgente PSD</li>
+        <li>Caricare il file nella riga 36 (settare bene la path dal file che carica il JS)</li>
+        <li>Inserire gli elementi che non hanno il canale alpha nei "forbidden names", alla riga 508</li>
+        <li>Settare la path del canale alpha (se necessario), alla riga 556</li>
+    </ul>
 
 </article>
 
