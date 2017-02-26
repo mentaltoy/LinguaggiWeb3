@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Three.js</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Space Mono -->
+    <link href="https://fonts.googleapis.com/css?family=Space+Mono" rel="stylesheet">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="src/css/style.css">
+
+
+</head>
+
+<body>
+
+
+<h1>Three.js</h1>
+
+<!--Intro-->
+<article>
+    <h4>Introduzione </h4>
+
+
+    <p>Three.js è una libreria open-source creata nel 2010 che permette di realizzare scene 3D direttamente nel browser.
+        Per il rendering, Three.js usa WebGL
+        (<a href="http://www.khronos.org/webgl/" target="_blank">Khronos Group</a>), se il browser lo supporta, oppure
+        può avere una fallback in HTML5 canvas o SVG se non è supportato.</p>
+
+    <p>Generare una scena direttamente in WebGL è molto difficile. Three.js offre un set di API semplice da utilizzare
+        che permette di creare e manipolare oggetti 3D senza avere particolari conoscenze di WebGL e complesse formule
+        matematiche.</p>
+
+    <p>WebGL è largamente supportato dai principali browser, dunque risulta un ottima soluzione per la creazione di
+        scene 3D che siano cross-browser.</p>
+
+    <p>Per questi esempi è stata usata la versione r84.</p>
+
+    <p>Risorse</p>
+    <ul>
+        <li><a href="https://threejs.org/" target="_blank">Pagina ufficiale di Three.js</a></li>
+        <li><a href="http://www.threejsgames.com/" target="_blank">Three.js Games (set di plugin molto utili di
+            Three.js)</a></li>
+
+        <li><a href="https://github.com/jeromeetienne/threex.domevents" target="_blank">DOM events - Per aggiungere eventi come click, rollover...</a></li>
+        <li><a href="https://greensock.com/get-started-js" target="_blank">GSAP - Per animare rapidamente le mesh</a></li>
+        <li><a href="https://stemkoski.github.io/Three.js/index.html#shadow" target="_blank">Stemkoski - ThreeJS examples</a></li>
+        <li><a href="https://github.com/dataarts/dat.gui" target="_blank">Dat.Gui</a></li>
+    </ul>
+
+
+</article>
+
+<!--Minimal Scene-->
+<article>
+    <h4>Generare una scena minima in Three.js</h4>
+
+    <p>Partiamo da una semplice scena in Three.js seguendo i seguenti step:</p>
+
+
+    <ul>
+        <li>Includere le librerie per lo sviluppo in Three.js</li>
+        <li>Creare un elemento <code>THREE.Scene</code></li>
+        <li>Creare un elemento <code>THREE.Camera</code></li>
+        <li>Settare un loop di rendering</li>
+    </ul>
+
+    <p>Per prima cosa, dopo aver scaricato la libreria, inseriamo il codice di Three.js:</p>
+
+    <code> &ltscript src=&quot;src/js/three.js&quot;&gt;&lt/script&gt; </code>
+    <br><br><br>
+
+    <p>A questo punto, nel nostro file js, possiamo cominciare a settare alcune variabili globali, come descritto di
+        seguito:</p>
+
+    <code>var renderer;</code><br>
+    <code>var scene;</code><br>
+    <code>var camera;</code><br>
+    <br><br><br>
+
+    <p>Successivamente creiamo la funzione <code>init()</code>, che inizializzerà Three.js non appena la pagina sarà
+        caricata:</p>
+
+    <code>
+        function init() {<br>
+        &nbsp;&nbsp;// Three.js initialization code<br>
+        }<br>
+        <br>
+
+        window.onload = init;
+
+    </code>
+
+    <br><br><br>
+
+    <p>Nella funzione <code>init()</code> stessa, possiamo ora inizializzare gli elementi base di una scena Three.js,
+        ovvero la scena stessa, il renderer e la camera: </p>
+
+    <code>
+        function init() {<br>
+
+        &nbsp;&nbsp;// Three.js initialization code<br><br>
+
+        &nbsp;&nbsp;scene = new THREE.Scene();<br><br>
+
+        &nbsp;&nbsp;renderer = new THREE.WebGLRenderer();<br>
+        &nbsp;&nbsp;renderer.setClearColor(0x000000, 1.0);<br>
+        &nbsp;&nbsp;renderer.setSize(window.innerWidth, window.innerHeight);<br>
+        &nbsp;&nbsp;renderer.shadowMap.enabled = true;<br><br>
+
+        &nbsp;&nbsp;camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);<br>
+        &nbsp;&nbsp;camera.position.x = 15;<br>
+        &nbsp;&nbsp;camera.position.y = 16;<br>
+        &nbsp;&nbsp;camera.position.z = 13;<br>
+        &nbsp;&nbsp;camera.lookAt(scene.position);<br><br>
+
+        &nbsp;&nbsp;document.body.appendChild(renderer.domElement);<br>
+        &nbsp;&nbsp;render();<br>
+        }<br>
+
+
+    </code>
+
+
+    <br>
+
+    <p>L'elemento <code>THREE.Scene</code> è l'lemento contenitore di tutti gli elementi che andremo ad inserire nel
+        nostro ambiente 3D. Di seguito l'oggetto <code>THREE.WebGLRenderer</code> e l'elmento che usa Three.js per
+        renderizzare la scena 3D. L'oggetto <code>THREE.PerspectiveCamera</code> invece è necessario per definire cosa
+        vediamo: è infatti attraverso di essa che abbiamo un "occhio" sul nostro ambiente tridimensionale.</p>
+
+    <br><br><br>
+
+    <p>Ora che abbiamo inizializzato i nostri elementi, passiamo al rendering stesso, ovvero l'"attivazione" del nostro
+        elemento scena 3D. Con la funzione <code>render()</code> rendiamo questo possibile: la troviamo come ultima
+        chiamata nella funzione <code>init()</code>.</p>
+
+
+    <code>
+        function render() {<br>
+        &nbsp;&nbsp;// render using requestAnimationFrame<br>
+        &nbsp;&nbsp;renderer.render( scene, camera);<br>
+        &nbsp;&nbsp;requestAnimationFrame( render);<br>
+        }<br>
+
+    </code>
+
+
+    <br>
+
+    <p>In questa funzione utilizziamo la funzione <code>render()</code> del renderer per renderizzare la scena. In
+        questa funzione, usiamo anche la funzione <code>requestAnimationFrame</code> per attivare un loop. Con <code>requestAnimationFrame</code>
+        chiediamo al browser di chiamare la funzione render continuamente, come se fosse un onEnterFrame di Flash. In
+        questo modo il rendering viene escluso dal normale thread javascript, rendendo la funzione più performante e
+        leggera. Un altro fattore interessante di questa funzione è il fatto che venga disattivata quando si passa ad un
+        altro tab del browser.</p>
+
+
+    <p>In sostanza, anche se in questo momento non sembra molto interessante, otteniamo come risultato la scena che
+        abbiamo di
+        seguito. L'unica modifica che abbiamo fatto è stata quella di cambiare il <code>renderer.setSize(window.innerWidth,
+            window.innerHeight);</code> con la larghezza e la altezza del nostro box-container:</p>
+
+    <div class="box-container" id="01-minimal"></div>
+
+
+</article>
+
+<!--Adding Mesh-->
+<article>
+    <h4>Aggiungere mesh alla scena</h4>
+
+    <p>Ora che abbiamo creato la nostra scena, possiamo inizare ad aggiungere elementi ad essa. Iniziamo da un semplice
+        cubo:</p>
+
+    <code>
+        // Aggiungo il cubo<br>
+        var cubeGeometry = new THREE.CubeGeometry(6, 4, 6);<br>
+        var cubeMaterial = new THREE.MeshLambertMaterial({color: "red"});<br>
+        var cube = new THREE.Mesh(cubeGeometry, cubeMaterial);<br>
+        cube.castShadow = true;<br>
+        scene.add(cube);<br>
+    </code>
+    <br/>
+
+    <p>Dal codice sopra possiamo notare come per prima venga creata la forma dell'oggetto, detta anche la geometry. La
+        creiamo utilizzando <code>THREE.CubeGeometry</code> e specificando la width, la height e la depth del cubo. Una
+        volta ottenuta la geometria, generiamo il materiale che applicheremo al cubo. In questo modo sarà possibile
+        determinare il colore, se riflette, se è trasparente e molto altro. In questo esempio abbiamo creato un <code>THREE.MeshLambertMaterial</code>,
+        applicandogli un colore rosso. Ovviamente, la scena avrà bisogno di una luce per mostrare il colore di questo
+        materiale. ad ogni modo, una volta creata la geometria e il materiale, possiamo combinare entrambi tramite il
+        <code>THREE.Mesh</code> object.
+    </p>
+
+    <br/><br/>
+    <p>Con lo stesso procedimento creiamo un piano su cui il cubo è appoggiato. Da notare alcune differenze con il cubo:
+        la geometria presenta solo 2 dimensioni, in quanto essendo un piano non ha bisogno della depth, e il piano è
+        inoltre ruotato di 90 gradi (esprimendo la misura in <code>radians</code>), perchè la sua disposizione originale
+        sarebbe quella verticale. Un altro elemento che modifichiamo è quello della posizione, che settiamo a -2
+        sull'asse y. in modo da posizionarsi esattamente al di sotto del cubo. Possiamo notare che l'altezza del cubo in
+        effetti è però 4. Il piano è spostato "solo" di 2 unità perchè il cubo è stato posizionato esattamente al centro
+        degli assi della scena, e quindi eccede di 2 unità in alto e in basso rispotto allo 0 dell'asse y. E' per questo
+        che è necessario solo uno spostamento di 2 per il piano sottostante.</p>
+
+    <code>
+
+        // Aggiungo il piano<br>
+        var planeGeometry = new THREE.PlaneGeometry(20, 20);<br>
+        var planeMaterial = new THREE.MeshLambertMaterial({color: 0xcccccc});<br>
+        var plane = new THREE.Mesh(planeGeometry, planeMaterial);<br>
+        plane.receiveShadow = true;<br>
+        plane.rotation.x = -0.5 * Math.PI;<br>
+        plane.position.y = -2;<br>
+        scene2.add(plane);<br>
+
+    </code>
+
+    <br/><br/>
+    <p>Come ultimo elemento inseriamo la luce nella nostra scena. Per questo esempio abbiamo scelto una <code>SpotLight</code> a cui assegnamo un colore (in questo caso bianco)</p>
+
+
+    <code>
+
+        // Aggiungo la luce<br>
+        var spotLight = new THREE.SpotLight(0xffffff);<br>
+        spotLight.position.set(10, 20, 20);<br>
+        spotLight.castShadow = true;<br>
+        scene2.add(spotLight);<br>
+
+    </code>
+
+    <p>Andare a vedere nel <a href="src/js/index.js" target="_blank">codice </a> come è stata migliorata la shadow. Da notare l'assenza di <code>shadowDarkness</code> per opacizzare l'ombra.</p>
+    <br/><br/>
+
+    <div class="box-container" id="02-mesh"></div>
+
+</article>
+
+<!-- Migliorare la scena iniziale -->
+<article>
+    <h4>Migliorare la scena iniziale</h4>
+
+    <p>Per aggiungere controllo al nostro ambiente di sviluppo, è molto comodo l'utilizzo di dat.gui.</p>
+
+    <p>Dat.gui applica una GUI sopra la scena, che permette di giocare con diversi parametri di essa senza dover cambiare il codice. Per prima cosa carichiamo la libreria di da.gui nella pagina:</p>
+
+    <code> &ltscript src=&quot;src/js/dat.gui.min.js&gt; </code>
+    <br/><br/>
+
+    <p>Come preparazione diamo al cubo che viene utilizzato in questo esempio un nome e, visto che andremo ad agire sulla trasparenza, la proprietà trasparenza:</p>
+
+    <code>
+
+        cube3.name = "cube";<br/>
+        cube3.material.transparent = true;<br/>
+
+    </code>
+    <br/><br/>
+    <p>Successivamente applichiamo il seguente codice, che genera i controlli che vediamo in alto a destra nell'esempio (da notare le ultime 2 righe e la prima per avere un posizionamento custom dell GUI):</p>
+    <p>Aggiungendo controlli alla GUI, si può notare come è possibile specificare il parametro che si andrà a modificare e il range di valori (min e max).</p>
+    <code>
+
+        control = new function () {<br/>
+        &nbsp;&nbsp;this.rotationSpeed = 0.005;<br/>
+        &nbsp;&nbsp;this.opacity = 0.6;<br/>
+        &nbsp;&nbsp;this.color = cubeMaterial.color.getHex();<br/>
+        };<br/>
+        addControlGui(control);<br/>
+        <br/><br/>
+        function addControlGui(controlObject) {<br/>
+        &nbsp;&nbsp;var gui = new dat.GUI({ autoPlace: false });<br/>
+        &nbsp;&nbsp;gui.add(controlObject, 'rotationSpeed', -0.01, 0.01);<br/>
+        &nbsp;&nbsp;gui.add(controlObject, 'opacity', 0.1, 1);<br/>
+        &nbsp;&nbsp;gui.addColor(controlObject, 'color');<br/>
+        &nbsp;&nbsp;var customContainer = document.getElementById('my-gui-container3');
+        &nbsp;&nbsp;customContainer.appendChild(gui.domElement);
+        }<br/>
+
+    </code>
+    <br/><br/>
+    <p>Per ultima cosa andiamo ad applicare l'update dei valori nel nostro loop, ovvero nella funzione che gestisce il rendering</p>
+    <code>
+
+        // Scene 3 con dat.gui<br/>
+        scene3.getObjectByName('cube').material.opacity = control.opacity;<br/>
+        scene3.getObjectByName('cube').material.color = new THREE.Color(control.color);<br/>
+        var rotSpeed = control.rotationSpeed;<br/>
+        camera3.position.x = camera3.position.x * Math.cos(rotSpeed) + camera3.position.z * Math.sin(rotSpeed);<br/>
+        camera3.position.z = camera3.position.z * Math.cos(rotSpeed) - camera3.position.x * Math.sin(rotSpeed);<br/>
+        camera3.lookAt(scene3.position);<br/>
+        <br/>
+        renderer3.render(scene3, camera3);<br/>
+
+    </code>
+    <br/><br/>
+    <p>Questo è il risultato:</p>
+
+
+    <div class="box-container" id="03-enhance">
+        <div id="my-gui-container3"></div>
+        <div id="my-stats-container3"></div>
+    </div>
+
+
+    <p>In aggiunta, inseriamo anche il modulo <code>stats</code>, che ci permette di inserire una GUI per controllare il valore dei FPS, ovvero Frame Per Second durante il rendering. Questo valore risulta molto utile in fase di debugging per conoscere le reali prestazioni del motore di rendering.</p>
+
+    <p>Per farlo, aggiungiamo la libreria:</p>
+
+    <code> &ltscript src=&quot;src/js/stats.min.js&gt; </code>
+    <br/><br/>
+    <p>E poi questo codice nell' <code>init()</code> della scena:</p>
+
+    <code>
+
+        function addStatsObject() {<br/>
+        &nbsp;&nbsp;stats = new Stats();<br/>
+        &nbsp;&nbsp;stats.setMode(0);<br/>
+        &nbsp;&nbsp;stats.domElement.style.position = 'absolute';<br/>
+        &nbsp;&nbsp;stats.domElement.style.left = '0px';<br/>
+        &nbsp;&nbsp;stats.domElement.style.top = '0px';<br/>
+        &nbsp;&nbsp;document.getElementById('my-stats-container3').appendChild(stats.domElement);<br/>
+        }<br/>
+        <br/>
+        addStatsObject();
+    </code>
+    <br/><br/>
+    <p>Inoltre ricordiamoci di aggiornare le statistiche tramite il metodo update, sempre nella funzione loop:</p>
+
+    <code>
+        // Stats<br/>
+        stats.update();<br/>
+
+    </code>
+    <br/><br/>
+
+    <p>Se apriamo la console, inoltre, è possibile notare come sia possibile eseguire: </p>
+
+    <code>console.log(cube3)</code><br/>
+    <br/>
+
+    <p>Per mostrare tutte le proprietà dell'oggetto. Da qui è possibile esplorare ogni proprietà, e anche cambiarla volendo (prova mesh > material > wireframe:true). In questo modo si capisce come andare ad agire su una specifica proprietà.</p>
+
+
+</article>
+
+<!-- Orbit Controls -->
+<article>
+    <h4>Aggiungere gli orbit controls</h4>
+
+    <p>Gli orbit controls sono dei controlli che ci permettono di navigare la nostra scena come in un editor 3D, si può ruotare zoomare e fare il pan nella nostra viewport.</p>
+
+    <p>Per attivarli, inseriamo innanzitutto la libreria nel nostro progetto:</p>
+
+    <code> &ltscript src=&quot;src/js/OrbitControls.js&gt; </code>
+    <br/><br/>
+    <p>A questo punto, possiamo inizializzare dei nuovi Orbit controls appena dopo la definizione della camera (notare come è stato settato il container come secondo parametro in modo da limitare l'orbit control solo a quel div):</p>
+
+    <code>
+
+        camera4.position.x = 15;<br/>
+        camera4.position.y = 16;<br/>
+        camera4.position.z = 13;<br/>
+        camera4.lookAt(scene4.position);<br/>
+        <br/>
+        // Qui<br/>
+        cameraControl4 = new THREE.OrbitControls( camera4,document.getElementById("04-orbit"));<br/>
+
+    </code>
+
+    <br/><br/>
+    <p>E poi come al solito inseriamo l'update della funzione direttamente nel nostro loop</p>
+
+    <code>
+        cameraControl4.update();
+    </code>
+
+    <div class="box-container" id="04-orbit">
+
+    </div>
+
+
+
+</article>
+
+
+<!-- DOM Events -->
+<article>
+    <h4>THREEX - DOM Events</h4>
+
+    <p>THREEX Dom Events è una utilissima estensione per il nostro progetto. Permette di associare un evento ad una mesh, come se fosse un normale elemento del DOM.</p>
+
+    <p>Per attivarla, inseriamola nel nostro progetto:</p>
+
+    <code> &ltscript src=&quot;src/js/threex.domevents.js&gt; </code>
+    <br/><br/>
+    <p>A questo punto, possiamo attivare gli eventi inizializzando un nuovo oggetto DomEvents, con i parametri della camera e del renderer:</p>
+
+    <code>
+
+        var domEvents   = new THREEx.DomEvents(camera5, renderer5.domElement);
+
+    </code>
+
+    <br/><br/>
+    <p>E poi fare il bind delle mesh che ci interessano e associare ad esse una funzione (è veramente molto preciso!).</p>
+
+    <code>
+        domEvents.addEventListener(cube5, 'click', function(event){<br/>
+        &nbsp;&nbsp;console.log('you clicked on the red mesh');<br/>
+        &nbsp;&nbsp;animate(event);<br/>
+        }, false);<br/>
+    </code>
+    <br/>
+    <p>Notare come in questo caso ci siamo aiutati con <a href="https://greensock.com/get-started-js" target="_blank">GSAP</a> per animare agevolmente le mesh:</p>
+
+    <div class="box-container" id="05-domevent">
+
+    </div>
+
+
+
+</article>
+
+
+</body>
+
+<script
+        src="https://code.jquery.com/jquery-3.1.1.min.js"
+        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+        crossorigin="anonymous"></script>
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+
+
+<!-- GSAP -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js"></script>
+
+
+<!-- Three.js -->
+<script src="src/js/three.js"></script>
+
+<!-- Dat Gui -->
+<script src="src/js/dat.gui.min.js"></script>
+
+<!-- Stats -->
+<script src="src/js/stats.min.js"></script>
+
+<!-- Orbit Controls -->
+<script src="src/js/OrbitControls.js"></script>
+
+<!--DOM Events-->
+<script src="src/js/threex.domevents.js"></script>
+
+
+<!-- Demo File -->
+<script src="src/js/index.js"></script>
+
+
+
+
+</html>
