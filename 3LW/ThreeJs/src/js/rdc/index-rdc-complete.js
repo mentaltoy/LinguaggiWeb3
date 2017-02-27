@@ -205,7 +205,7 @@ function start3Dexp(){
     function update(e) {
 
         var VIDEO_INIT = 0,
-            VIDEO_END = 103,
+            VIDEO_END = 6,
             auxTime;
 
         auxTime = currentTime + e;

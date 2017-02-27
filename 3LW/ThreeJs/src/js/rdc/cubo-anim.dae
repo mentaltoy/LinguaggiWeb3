@@ -4,8 +4,8 @@
         <contributor>
             <authoring_tool>CINEMA4D 17.055 COLLADA Exporter</authoring_tool>
         </contributor>
-        <created>2017-02-26T19:16:30Z</created>
-        <modified>2017-02-26T19:16:30Z</modified>
+        <created>2017-02-27T00:41:30Z</created>
+        <modified>2017-02-27T00:41:30Z</modified>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>
@@ -344,7 +344,7 @@
                     </technique_common>
                 </source>
                 <source id="ID60">
-                    <float_array id="ID61" count="4">-1 0 2 0</float_array>
+                    <float_array id="ID61" count="4">-1 0 2 180</float_array>
                     <technique_common>
                         <accessor count="2" source="#ID61" stride="2">
                             <param name="X" type="float"/>
@@ -353,7 +353,7 @@
                     </technique_common>
                 </source>
                 <source id="ID62">
-                    <float_array id="ID63" count="4">1 0 4 0</float_array>
+                    <float_array id="ID63" count="4">1 0 4 180</float_array>
                     <technique_common>
                         <accessor count="2" source="#ID63" stride="2">
                             <param name="X" type="float"/>
@@ -362,7 +362,7 @@
                     </technique_common>
                 </source>
                 <source id="ID64">
-                    <float_array id="ID65" count="2">0 0</float_array>
+                    <float_array id="ID65" count="2">0 180</float_array>
                     <technique_common>
                         <accessor count="2" source="#ID65">
                             <param name="ANGLE" type="float"/>
@@ -607,10 +607,10 @@
                 <instance_light url="#ID10"/>
             </node>
             <node id="ID11" name="Cube">
-                <translate sid="translate">135.157 0 -0</translate>
-                <rotate sid="rotateY">0 1 0 -0</rotate>
-                <rotate sid="rotateX">1 0 0 0</rotate>
-                <rotate sid="rotateZ">0 0 1 -0</rotate>
+                <translate sid="translate">273.987 0 -0</translate>
+                <rotate sid="rotateY">0 1 0 180</rotate>
+                <rotate sid="rotateX">1 0 0 7.01671e-15</rotate>
+                <rotate sid="rotateZ">0 0 1 -180</rotate>
                 <scale sid="scale">1 1 1</scale>
                 <instance_geometry url="#ID111">
                     <bind_material>

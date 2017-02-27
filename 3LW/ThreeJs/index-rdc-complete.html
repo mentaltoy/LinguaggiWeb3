@@ -33,6 +33,20 @@
         esistente, e verrà considerata l'aniamazione generata con Cinema 4D (riga 206). Bisogna tenere conto che sarà
         possibile generare animazioni solo con 2 keyframe, uno all'inizio e uno alla fine della timeline. Il file funziona sia con lo scroll che con lo swipe su mobile.</p>
 
+    <p>Testato con export da Cinema r17 - Collada versione 1.4</p>
+
+    <ul>
+        <li>Rispetto ad un normale progetto Three.js ha bisogno di questi file aggiuntivi: ColladaLoader, Detector, inertiaScroll</li>
+        <li>Generare modello in Cinema 4D</li>
+        <li>Generare texture con Body Paint, applicare la texture come jpg e tenersi il sorgente in PSD</li>
+        <li>Generare l'eventuale alpha dalla stessa sorgente PSD</li>
+        <li>Caricare il file nella riga 36 (settare bene la path dal file che carica il JS)</li>
+        <li>Inserire gli elementi che non hanno il canale alpha nei "forbidden names", alla riga 508</li>
+        <li>Settare la path del canale alpha (se necessario), alla riga 556</li>
+        <li>Settare la durata dell'animazione alla riga 208</li>
+
+    </ul>
+
 </article>
 
 <div id="percentage"></div>
