@@ -82,16 +82,29 @@ body.body-rdc{
   overflow: hidden;
 }
 
+.btn.switch-scroll{
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  z-index: 10;
+}
+
+
 .article-rdc{
   padding: 0 20px;
   position: absolute;
   top: 0;
   z-index: 1;
-
+  height: 100%;
+  overflow-y: scroll;
 
   h1{
     padding-left: 0;
     margin-bottom: 40px;
+  }
+
+  &.on-top{
+    z-index: 9;
   }
 
 }
@@ -102,6 +115,11 @@ body.body-rdc{
   z-index: 0;
   width: 100%;
   height: 100%;
+
+  &.disable{
+    pointer-events: none;
+  }
+
 }
 
 #home-intro-scroll-sensor{

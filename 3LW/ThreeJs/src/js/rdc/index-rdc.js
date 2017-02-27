@@ -1,5 +1,25 @@
 start3Dexp();
 
+// Switch between 3D and text for scrolling
+function switchScroll(event){
+    var articleScroll = document.querySelector(".article-rdc");
+    articleScroll.classList.toggle("on-top");
+
+    if ( articleScroll.className == 'article-rdc on-top' ) {
+
+        controlliCamera.enabled = false;
+
+    }
+
+    else {
+
+        controlliCamera.enabled = true;
+
+    }
+
+
+}
+
 /* THREE jS */
 
 function start3Dexp(){
@@ -103,6 +123,9 @@ function start3Dexp(){
         //camera.position.y = 36;
         camera.position.z = 100; // Lascia solo questo per il tilt
         camera.lookAt(scene.position);
+
+
+
 
 
 

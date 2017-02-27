@@ -1,5 +1,13 @@
 start3Dexp();
 
+
+// Switch between 3D and text for scrolling
+function switchScroll(event){
+    var theDropDown = document.querySelector(".article-rdc");
+    theDropDown.classList.toggle("on-top");
+}
+
+
 /* THREE jS */
 
 function start3Dexp(){
