@@ -18,7 +18,7 @@ All the lessons are in the folder:
 * [Scss](http://www.mentaltoy.com/resources/quasar-1617/3LW/3LW/Scss/index.html)
 * [Flexbox](http://www.mentaltoy.com/resources/quasar-1617/3LW/3LW/Flexbox/index.html)
 * [Three.Js](http://www.mentaltoy.com/resources/quasar-1617/3LW/3LW/ThreeJs/index.html)
-* [Three.Js | threeJS](http://www.mentaltoy.com/resources/quasar-1617/3LW/3LW/ThreeJs/index-rdc.html)
+* [Three.Js (Index RDC)](http://www.mentaltoy.com/resources/quasar-1617/3LW/3LW/ThreeJs/index-rdc.html)
 
 
 
